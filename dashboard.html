@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title th:text="${title}">Painel de vendas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#vendas">Vendas</a></li>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#relatorios">Relatórios</a></li>
+            <li><a href="#configuracoes">Configurações</a></li>
+        </ul>
+    </nav>
+
+    <h1>Painel de Vendas</h1>
+    <canvas id="graficoVendas"></canvas>
+    <h2>Vendas no Último Mês</h2>
+    <canvas id="graficoVendasPorDia"></canvas>
+    <script src="dashboard.js"></script>
+</body>
+</html>
