@@ -1,0 +1,20 @@
+nav {
+    background: linear-gradient(135deg, #5ea00e, #56ab2f); /* Add this line for a green gradient */
+    padding: 10px 0;
+    border-radius: 10px;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
