@@ -15,7 +15,6 @@ fetch('/api/dashboard')
                 data: {
                     labels: labelsVendas,
                     datasets: [{
-                        label: 'Vendas por Categoria',
                         data: valoresVendas,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -27,10 +26,16 @@ fetch('/api/dashboard')
                             'rgba(54, 162, 235, 1)',
                             'rgba(255, 206, 86, 1)',
                         ],
-                        borderWidth: 1
+                        borderWidth: 1,
+                        barPercentage: 0.5
                     }]
                 },
                 options: {
+                    plugins: {
+                        legend: {
+                            display: false // Disable the legend
+                        }
+                    },
                     scales: {
                         y: {
                             beginAtZero: true
