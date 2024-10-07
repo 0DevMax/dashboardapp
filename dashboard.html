@@ -3,27 +3,40 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${title}">Painel de vendas</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
     <nav>
+        <img src="empresa.png" alt="Logo" class="logo">
         <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#vendas">Vendas</a></li>
-            <li><a href="#produtos">Produtos</a></li>
-            <li><a href="#relatorios">Relatórios</a></li>
-            <li><a href="#configuracoes">Configurações</a></li>
+            <li><a href="#inicio"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#vendas"><i class="fas fa-chart-line"></i> Vendas</a></li>
+            <li><a href="#produtos"><i class="fas fa-box"></i> Produtos</a></li>
+            <li><a href="#relatorios"><i class="fas fa-file-alt"></i> Relatórios</a></li>
+            <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
         </ul>
     </nav>
 
-    <h1>Painel de Vendas</h1>
-    <canvas id="graficoVendas"></canvas>
-    <h2>Vendas no Último Mês</h2>
-    <canvas id="graficoVendasPorDia"></canvas>
+    <h1 id="tituloPainel">Painel de Vendas</h1>
+
+    <div id="graficosContainer">
+        <div class="chart-container">
+            <h2>Vendas por Categoria</h2>
+            <canvas id="graficoVendas"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h2>Vendas no Último Mês</h2>
+            <canvas id="graficoVendasPorDia"></canvas>
+        </div>
+    </div>
+
     <script src="dashboard.js"></script>
 </body>
+</html>
 </html>
