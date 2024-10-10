@@ -2,7 +2,7 @@ nav {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center items vertically */
     justify-content: space-between; /* Space between logo and nav items */
-    background: linear-gradient(135deg, #b9beb2, #424242);
+    background: linear-gradient(135deg, #ee4300, #ff5201);
     padding: 10px 20px; /* Add padding for spacing */
     border-radius: 10px;
 }
