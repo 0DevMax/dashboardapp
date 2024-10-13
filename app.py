@@ -60,7 +60,7 @@ def obter_dados_dashboard():
             data, total_quantidade = row
             data_str = data.strftime('%Y-%m-%d') if isinstance(data, datetime.date) else str(data)
             dash2[data_str] = total_quantidade
-        dados_retornados_completo['dadosPorData'] = dash2
+        dados_retornados_completo['dadosPorDia'] = dash2
 
         return dados_retornados_completo
 

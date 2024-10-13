@@ -4,11 +4,11 @@ fetch('/api/dashboard')
         console.log("Dados recebidos da API:", data);
 
         // Gráfico de Vendas por Categoria
-        const dadosVendas = data.dadosVendas;
-        if (dadosVendas && Object.keys(dadosVendas).length > 0) {
-            const ctxVendas = document.getElementById('graficoVendas').getContext('2d');
-            const labelsVendas = Object.keys(dadosVendas);
-            const valoresVendas = Object.values(dadosVendas);
+        const dadosPorCategoria = data.dadosPorCategoria;
+        if (dadosPorCategoria && Object.keys(dadosPorCategoria).length > 0) {
+            const ctxVendas = document.getElementById('VendasCategoria').getContext('2d');
+            const labelsVendas = Object.keys(dadosPorCategoria);
+            const valoresVendas = Object.values(dadosPorCategoria);
 
             new Chart(ctxVendas, {
                 type: 'bar',
@@ -33,7 +33,7 @@ fetch('/api/dashboard')
                 options: {
                     plugins: {
                         legend: {
-                            display: false // Disable the legend
+                            display: false
                         }
                     },
                     scales: {
@@ -44,16 +44,16 @@ fetch('/api/dashboard')
                 }
             });
         } else {
-            console.error("dadosVendas está vazio ou undefined");
-            document.getElementById('graficoVendas').insertAdjacentHTML('afterend', '<p>Não há dados disponíveis para o gráfico de vendas por categoria.</p>');
+            console.error("dadosPorCategoria está vazio ou undefined");
+            document.getElementById('VendasCategoria').insertAdjacentHTML('afterend', '<p>Não há dados disponíveis para o gráfico de vendas por categoria.</p>');
         }
 
         // Gráfico de Vendas por Dia
-        const dadosVendasPorDia = data.dadosVendasPorDia;
-        if (dadosVendasPorDia && Object.keys(dadosVendasPorDia).length > 0) {
-            const ctxVendasPorDia = document.getElementById('graficoVendasPorDia').getContext('2d');
-            const labelsVendasPorDia = Object.keys(dadosVendasPorDia);
-            const valoresVendasPorDia = Object.values(dadosVendasPorDia);
+        const dadosPorPorDia = data.dadosPorDia;
+        if (dadosPorPorDia && Object.keys(dadosPorPorDia).length > 0) {
+            const ctxVendasPorDia = document.getElementById('VendasDia').getContext('2d');
+            const labelsVendasPorDia = Object.keys(dadosPorPorDia);
+            const valoresVendasPorDia = Object.values(dadosPorPorDia);
 
             new Chart(ctxVendasPorDia, {
                 type: 'line',
@@ -76,8 +76,8 @@ fetch('/api/dashboard')
                 }
             });
         } else {
-            console.error("dadosVendasPorDia está vazio ou undefined");
-            document.getElementById('graficoVendasPorDia').insertAdjacentHTML('afterend', '<p>Não há dados disponíveis para o gráfico de vendas por dia.</p>');
+            console.error("dadosPorDataPorDia está vazio ou undefined");
+            document.getElementById('VendasDia').insertAdjacentHTML('afterend', '<p>Não há dados disponíveis para o gráfico de vendas por dia.</p>');
         }
     })
     .catch(error => {

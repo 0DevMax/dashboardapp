@@ -25,18 +25,18 @@
     <h1 id="tituloPainel">Painel de Vendas</h1>
 
     <div id="graficosContainer">
-        <div class="chart-container">
+        <div class="canvas-container">
             <h2>Vendas por Categoria</h2>
-            <canvas id="graficoVendas"></canvas>
+            <canvas id="VendasCategoria"></canvas>
         </div>
 
-        <div class="chart-container">
+        <div class="canvas-container">
             <h2>Vendas no Último Mês</h2>
-            <canvas id="graficoVendasPorDia"></canvas>
+            <canvas id="VendasDia"></canvas>
         </div>
     </div>
 
-    <script src="dashboard.js"></script>
+    <script type='module' src="{{ url_for('static', filename='dashboard.js') }}"></script>
 </body>
 </html>
 </html>

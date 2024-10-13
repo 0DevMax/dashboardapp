@@ -61,3 +61,7 @@ canvas {
     align-items: flex-start; /* Align items at the start of the container */
     gap: 20px; /* Add space between the chart containers */
 }
+
+#canvas-container {
+    width: 800px;
+}
