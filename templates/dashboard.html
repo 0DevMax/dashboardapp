@@ -1,42 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${title}">Painel de vendas</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+{% block conteudo %}
 
-<body>
-    <nav>
-        <img src="/static/empresa.png" alt="Logo" class="logo">
-        <ul>
-            <li><a href="#inicio"><i class="fas fa-home"></i> Início</a></li>
-            <li><a href="#vendas"><i class="fas fa-chart-line"></i> Vendas</a></li>
-            <li><a href="#produtos"><i class="fas fa-box"></i> Produtos</a></li>
-            <li><a href="#relatorios"><i class="fas fa-file-alt"></i> Relatórios</a></li>
-            <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
-        </ul>
-    </nav>
 
     <h1 id="tituloPainel">Painel de Vendas</h1>
 
     <div id="graficosContainer">
-        <div class="canvas-container">
-            <h2>Vendas por Categoria</h2>
-            <canvas id="VendasCategoria"></canvas>
+            <div>
+                <h2>Vendas por categoria</h2>
+                <canvas id="VendasCategoria"></canvas>
+            </div>
+            
+            <div>
+                <h2>Vendas no último mês</h2>
+                <canvas id="VendasDia"></canvas>
+            </div>
         </div>
-
-        <div class="canvas-container">
-            <h2>Vendas no Último Mês</h2>
-            <canvas id="VendasDia"></canvas>
-        </div>
-    </div>
-
-    <script type='module' src="{{ url_for('static', filename='dashboard.js') }}"></script>
-</body>
-</html>
-</html>
+{% endblock %}

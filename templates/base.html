@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Painel de vendas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="sidebar">
+        <img src="/static/empresa.png" alt="Logo" class="logo">
+            <div class="item-menu"><i class="fas fa-home"></i>     inicio</div>
+            <div class="item-menu"><i class="fas fa-chart-line"></i>  vendas</div>
+            <div class="item-menu"><i class="fas fa-box"></i>  produtos</div>
+            <div class="item-menu"><i class="fas fa-file-alt"></i>  relatorios</div>
+            <div class="item-menu"><i class="fas fa-cog"></i>  configuracoes</div>
+            <div class="item-menu"><i class="fa-solid fa-boxes-stacked"></i>  Estoque</div>
+    </div>
+    
+    
+    <div class="content">
+        {% block conteudo %}
+        {% endblock %}
+    </div>
+    
+
+    <script type='module' src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>
+</html>

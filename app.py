@@ -26,6 +26,10 @@ app = Flask(__name__, static_folder="static")
 def index():
     return render_template("dashboard.html")
 
+@app.route('/produtos')
+def rota_produtos():
+    return render_template("produtos.html")
+
 # Função para retornar os dados
 def obter_dados_dashboard():
     dados_retornados_completo = {}

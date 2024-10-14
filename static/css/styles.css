@@ -1,67 +1,85 @@
-nav {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    justify-content: space-between; /* Space between logo and nav items */
-    background: linear-gradient(135deg, #ee4300, #ff5201);
-    padding: 10px 20px; /* Add padding for spacing */
-    border-radius: 10px;
-}
-
-nav .logo {
-    height: 40px; /* Adjust logo size */
-}
-
-nav ul {
-    display: flex; /* Use flexbox for nav items */
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin-left: 20px; /* Space between nav items */
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-}
-
-nav ul li a i {
-    margin-right: 8px; /* Space between icon and text */
-}
-
-.chart-container {
-    text-align: center; /* Center the content within the container */
-    margin-bottom: 20px; /* Add some space between each chart container */
-    width: 45%; /* Set a width to ensure they fit side by side */
+body {
+    height: 100vh;
+    margin: 60px;
+    font-family: "Afacad Flux", sans-serif;
+    background-color: rgb(238, 238, 238);
 }
 
 canvas {
-    width: 100%; /* Make the canvas take the full width of the container */
-    height: auto; /* Maintain aspect ratio */
-    display: block;
-    margin: 0 auto;
+    height: 600px; 
+    width: 600px;
+    margin: 100 auto;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.sidebar {
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    padding-top: 40px;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    top: 0;
+    left: 0;
+}
+
+.content {
+    margin-left: 250px;
+}
+
+.canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.item-menu {
+    margin: 15px;
+    color: white;
+    size: 50px;
+}
+
+.input {
+    margin:12px;
 }
 
 #tituloPainel {
-    text-align: center; /* Center the text horizontally */
-    margin-top: 20px; /* Add some space above the title */
-    margin-bottom: 40px; /* Add space below the title */
-    font-size: 2em; /* Adjust the font size as needed */
-    color: #333; /* Set a color for the text */
+    text-align: center; 
+    margin-top: 20px; 
+    margin-bottom: 40px; 
+    font-size: 2em; 
+    color: #9443f8; 
 }
 
 #graficosContainer {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-around; /* Space out the items evenly */
-    align-items: flex-start; /* Align items at the start of the container */
-    gap: 20px; /* Add space between the chart containers */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+    align-items: flex-start; 
+    gap: 20px; 
 }
 
-#canvas-container {
-    width: 800px;
+#graficosContainer > div {
+    height:500;
+    width:400;
+    background-color: white;
+    border-radius: 30px;
+    padding: 15px;
 }
+
+
+#formulario {
+    width: 50%;
+}
+

@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+
+{% block conteudo %}
+
+<div>
+
+    <h1>Adicionar novo produto</h1>
+
+    <div id="formulario">
+        <form>
+            <div class="input">
+                <label for="nome-produto">Nome</label>
+                <input id="nome-produto" name="nome-produto">
+            </div>
+            
+            <div class="input">
+                <label for="quantidade-produto">Quantidade</label>
+                <input id="quantidade-produto" name="quantidade-produto">
+            </div>
+
+            <div class="input">
+                <label for="preco-produto">Preço</label>
+                <input id="preco-produto" name="preco-produto">
+            </div>
+
+            <div class="input">
+                <label for="categoria-produto">Categoria</label>
+                <input id="categoria-produto" name="categoria-produto">
+            </div>
+
+        </form>
+    </div>
+
+
+</div>
+
+{% endblock %}
