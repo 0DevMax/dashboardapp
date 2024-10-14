@@ -1,85 +1,146 @@
-body {
-    height: 100vh;
-    margin: 60px;
-    font-family: "Afacad Flux", sans-serif;
-    background-color: rgb(238, 238, 238);
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+:root{
+    --branco: #f9f9f9;
+    --cinza-escuro: #36383F;
+    --cinza: #85888C;
 }
 
-canvas {
-    height: 600px; 
-    width: 600px;
-    margin: 100 auto;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-form {
-    display: flex;
-    flex-direction: column;
+body{
+    background-color: var(--branco);
+    font-family: "Poppins", sans-serif;
 }
 
+a{
+    text-decoration: none;
+}
 
-.sidebar {
-    height: 100%;
-    width: 150px;
-    position: fixed;
-    padding-top: 40px;
-    padding: 15px;
-    background-color: rgb(0, 0, 0);
+ul{
+    list-style: none;
+}
+
+.header{
+    background-color: var(--cinza-escuro);
+    box-shadow: 1px 1px 5px 0px var(--cinza);
+    position: sticky;
     top: 0;
-    left: 0;
+    width: 100%;
 }
 
-.content {
-    margin-left: 250px;
+.logo{
+    width: 8vh;
+    height: 8vh;
+    margin: 0.5vh;
 }
 
-.canvas-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.nav{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: var(--cinza-escuro);
+    overflow: hidden;
 }
 
-.logo {
-    width: 100px;
-    height: 100px;
+.menu a{
+    display: block;
+    padding: 30px;
+    color: var(--branco);
 }
 
-.item-menu {
-    margin: 15px;
-    color: white;
-    size: 50px;
+.menu a:hover{
+    background-color: var(--cinza);
 }
 
-.input {
-    margin:12px;
+.nav{
+    max-height: 0;
+    transition: max-height .5s ease-out;
 }
 
-#tituloPainel {
-    text-align: center; 
-    margin-top: 20px; 
-    margin-bottom: 40px; 
-    font-size: 2em; 
-    color: #9443f8; 
+.hamb{
+    cursor: pointer;
+    float: right;
+    padding: 40px 20px;
 }
 
-#graficosContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around; 
-    align-items: flex-start; 
-    gap: 20px; 
+.hamb-line {
+    background-color: var(--branco);
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
 }
 
-#graficosContainer > div {
-    height:500;
-    width:400;
-    background-color: white;
-    border-radius: 30px;
-    padding: 15px;
+.hamb-line::before,
+.hamb-line::after{
+    background-color: var(--branco);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
 }
 
-
-#formulario {
-    width: 50%;
+.hamb-line::before{
+    top: 5px;
 }
 
+.hamb-line::after{
+    top: -5px;
+}
+
+.side-menu{
+    display: none; 
+}
+
+.side-menu:checked ~ nav{
+    max-height:100%;
+}
+
+.side-menu:checked ~ .hamb .hamb-line {
+   background: transparent;
+}
+
+.side-menu:checked ~ .hamb .hamb-line::before{
+    transform: rotate(-45deg);
+    top:0;
+}
+
+.side-menu:checked ~ .hamb .hamb-line::after{
+    transform: rotate(45deg);
+    top: 0;
+}
+
+body:has(.side-menu:checked){
+    overflow: hidden;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .nav{
+        max-height: none;
+        top: 0;
+        position: relative;
+        float: right;
+        width: fit-content;
+        background-color: transparent;
+    }
+    .menu li{
+        float: left;
+    }
+    .menu a:hover{
+        background-color: transparent;
+        color: var(--gray);
+
+    }
+
+    .hamb{
+        display: none;
+    }
+}
