@@ -2,18 +2,20 @@
 
 {% block conteudo %}
 
+    <div id="painel">
+        <h1 id="tituloPainel">Painel de Vendas</h1>
 
-    <h1 id="tituloPainel">Painel de Vendas</h1>
+        <div id="graficosContainer">
+                <div>
+                    <h2>Vendas por categoria</h2>
+                    <canvas id="VendasCategoria"></canvas>
+                </div>
+                
+                <div>
+                    <h2>Vendas no último mês</h2>
+                    <canvas id="VendasDia"></canvas>
+                </div>
+            </div>
+    </div>
 
-    <div id="graficosContainer">
-            <div>
-                <h2>Vendas por categoria</h2>
-                <canvas id="VendasCategoria"></canvas>
-            </div>
-            
-            <div>
-                <h2>Vendas no último mês</h2>
-                <canvas id="VendasDia"></canvas>
-            </div>
-        </div>
 {% endblock %}

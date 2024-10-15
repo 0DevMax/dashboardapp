@@ -26,7 +26,7 @@ ul{
 }
 
 .header{
-    background-color: var(--cinza-escuro);
+    background-color: var(--branco);
     box-shadow: 1px 1px 5px 0px var(--cinza);
     position: sticky;
     top: 0;
@@ -50,7 +50,7 @@ ul{
 .menu a{
     display: block;
     padding: 30px;
-    color: var(--branco);
+    color: black;
 }
 
 .menu a:hover{
@@ -69,7 +69,7 @@ ul{
 }
 
 .hamb-line {
-    background-color: var(--branco);
+    background-color: black;
     display: block;
     height: 2px;
     position: relative;
@@ -78,7 +78,7 @@ ul{
 
 .hamb-line::before,
 .hamb-line::after{
-    background-color: var(--branco);
+    background-color: black;
     content: '';
     display: block;
     height: 100%;
@@ -119,6 +119,15 @@ ul{
 
 body:has(.side-menu:checked){
     overflow: hidden;
+}
+
+#painel {
+    padding: 4.5vw;
+}
+
+#graficosContainer > div {
+    width: 100%;
+    max-width: 600px;
 }
 
 /* Responsividade */
