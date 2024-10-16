@@ -2,20 +2,21 @@
 
 {% block conteudo %}
 
-    <div id="painel">
-        <h1 id="tituloPainel">Painel de Vendas</h1>
+    <div>
 
-        <div id="graficosContainer">
-                <div>
-                    <h2>Vendas por categoria</h2>
-                    <canvas id="VendasCategoria"></canvas>
-                </div>
-                
-                <div>
-                    <h2>Vendas no último mês</h2>
-                    <canvas id="VendasDia"></canvas>
-                </div>
-            </div>
+        <div>Bem-vinda, Administradora</div>
+        
+        <div class="card" id="faturamento">
+            <h3 class="CardTitulo">Faturamento do mês</h3>
+            <p class="cardInfo">Aumento de 100%</p>
+            <p class="cardValue">R$440,00</p>
+        </div>
+
+        <div class="card" id="despesas">
+            <h2 class="CardTitulo">Despesas do mês</h2>
+            <p class="cardInfo">Aumento de 100%</p>
+            <p class="cardValor">R$310,00</p>
+        </div>
     </div>
 
 {% endblock %}

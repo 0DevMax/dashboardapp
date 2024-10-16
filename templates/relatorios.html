@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+    <div id="painel">
+        <h1 id="tituloPainel">Relatórios</h1>
+
+        <div id="graficosContainer">
+                <div>
+                    <h2>Vendas por categoria</h2>
+                    <canvas id="VendasCategoria"></canvas>
+                </div>
+                
+                <div>
+                    <h2>Vendas no último mês</h2>
+                    <canvas id="VendasDia"></canvas>
+                </div>
+            </div>
+    </div>
+
+{% endblock %}

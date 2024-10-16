@@ -4,6 +4,7 @@
     --branco: #f9f9f9;
     --cinza-escuro: #36383F;
     --cinza: #85888C;
+    font-size: 16px; /* Define um tamanho base para 1rem */
 }
 
 *{
@@ -25,6 +26,10 @@ ul{
     list-style: none;
 }
 
+input {
+    width: 50%; /* Mantém como porcentagem para responsividade */
+}
+
 .header{
     background-color: var(--branco);
     box-shadow: 1px 1px 5px 0px var(--cinza);
@@ -34,9 +39,9 @@ ul{
 }
 
 .logo{
-    width: 8vh;
-    height: 8vh;
-    margin: 0.5vh;
+    width: 5rem; /* Aproximadamente 80px se o tamanho base for 16px */
+    height: 5rem;
+    margin: 0.3125rem; /* 5px */
 }
 
 .nav{
@@ -49,7 +54,7 @@ ul{
 
 .menu a{
     display: block;
-    padding: 30px;
+    padding: 1.875rem; /* 30px */
     color: black;
 }
 
@@ -65,7 +70,7 @@ ul{
 .hamb{
     cursor: pointer;
     float: right;
-    padding: 40px 20px;
+    padding: 2.5rem 1.25rem; /* 40px 20px */
 }
 
 .hamb-line {
@@ -121,6 +126,26 @@ ul{
     margin-right: 0.5vw;
 }
 
+.content {
+    padding: 1.25rem;
+    padding-top: 5rem; /* Ajustado de 12vw */
+    align-items: center;
+}
+
+
+.card {
+    margin: 1.25rem; /* 20px */
+    padding: 1.25rem; /* 20px */
+    height: 8.625rem; /* 170px */
+    width: 19.25rem; /* 500px */
+}
+
+.CardTitulo {
+    font-size: 1.25rem; /* 20px se o tamanho base for 16px */
+    margin-bottom: 1.5rem; /* 24px */
+    font-weight: bold;
+}
+
 body:has(.side-menu:checked){
     overflow: hidden;
 }
@@ -132,6 +157,14 @@ body:has(.side-menu:checked){
 #graficosContainer > div {
     width: 100%;
     max-width: 600px;
+}
+
+#faturamento {
+    background-color: green;
+}
+
+#despesas {
+    background-color: red;
 }
 
 /* Responsividade */
@@ -156,4 +189,9 @@ body:has(.side-menu:checked){
     .hamb{
         display: none;
     }
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
 }

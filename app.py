@@ -21,7 +21,7 @@ cursor = conn.cursor()
 
 app = Flask(__name__, static_folder="static")
 
-# Rota inicial
+# Rotas
 @app.route('/')
 def index():
     return render_template("dashboard.html")
@@ -29,6 +29,10 @@ def index():
 @app.route('/produtos')
 def rota_produtos():
     return render_template("produtos.html")
+
+@app.route('/relatorios')
+def rota_relatorios():
+    return render_template("relatorios.html")
 
 # Função para retornar os dados
 def obter_dados_dashboard():
