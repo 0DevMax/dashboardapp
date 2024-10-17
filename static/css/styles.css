@@ -134,16 +134,29 @@ input {
 
 
 .card {
-    margin: 1.25rem; /* 20px */
-    padding: 1.25rem; /* 20px */
-    height: 8.625rem; /* 170px */
-    width: 19.25rem; /* 500px */
+    margin: 1.25rem;
+    padding: 1.25rem;
+    height: 8.625rem; 
+    width: 19.25rem;
+    border-radius: 0.75rem;
 }
 
 .CardTitulo {
-    font-size: 1.25rem; /* 20px se o tamanho base for 16px */
-    margin-bottom: 1.5rem; /* 24px */
+    font-size: 1.25rem; 
+    margin-bottom: 0.35rem;
     font-weight: bold;
+}
+
+.cardValor {
+    font-size: 1.10rem;
+}
+
+.arrow-despesas {
+color: #ad0000;
+}
+
+.arrow-faturamento {
+color: darkgreen;
 }
 
 body:has(.side-menu:checked){
@@ -160,11 +173,25 @@ body:has(.side-menu:checked){
 }
 
 #faturamento {
-    background-color: green;
+    background-color: #9cf79c;
 }
 
 #despesas {
-    background-color: red;
+    background-color: #fa7171;
+}
+
+#cardInfoFaturamento {
+color: green;
+}
+
+#cardInfoDespesas {
+color: red;
+}
+
+#CardEncomendas {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
 }
 
 /* Responsividade */

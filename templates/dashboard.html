@@ -2,21 +2,25 @@
 
 {% block conteudo %}
 
-    <div>
+<div class="content">
+    <div>Bem-vinda, Administradora</div>
 
-        <div>Bem-vinda, Administradora</div>
-        
-        <div class="card" id="faturamento">
-            <h3 class="CardTitulo">Faturamento do mês</h3>
-            <p class="cardInfo">Aumento de 100%</p>
-            <p class="cardValue">R$440,00</p>
-        </div>
-
-        <div class="card" id="despesas">
-            <h2 class="CardTitulo">Despesas do mês</h2>
-            <p class="cardInfo">Aumento de 100%</p>
-            <p class="cardValor">R$310,00</p>
-        </div>
+    <!--  Fazer um swipe para encomendas -->
+    <div class="card" id="CardEncomendas">
+        <h3 class="CardTitulo">Encomendas</h3>
     </div>
+
+    <div class="card" id="faturamento">
+        <h3 class="CardTitulo">Faturamento do mês</h3>
+        <p id="cardInfoFaturamento">Aumento de 100%</p>
+        <p class="cardValor"><i class="fa-solid fa-arrow-up-long arrow-faturamento"></i>R$440,00</p>
+    </div>
+
+    <div class="card" id="despesas">
+        <h2 class="CardTitulo">Despesas do mês</h2>
+        <p id="cardInfoDespesas">Aumento de 100%</p>
+        <p class="cardValor"><i class="fa-solid fa-arrow-up-long arrow-despesas"></i>R$310,00</p>
+    </div>
+</div>
 
 {% endblock %}
