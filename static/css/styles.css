@@ -128,7 +128,7 @@ input {
 
 .content {
     padding: 1.25rem;
-    padding-top: 5rem; /* Ajustado de 12vw */
+    padding-top: 0.5rem; /* Ajustado de 12vw */
     align-items: center;
 }
 
@@ -151,12 +151,21 @@ input {
     font-size: 1.10rem;
 }
 
+.cardInfoValor {
+    display: flex;
+    flex-direction: row;
+}
+
 .arrow-despesas {
 color: #ad0000;
 }
 
 .arrow-faturamento {
 color: darkgreen;
+}
+
+.tag {
+    color:#85888C
 }
 
 body:has(.side-menu:checked){
@@ -192,6 +201,7 @@ color: red;
     border-color: black;
     border-style: solid;
     border-width: 1px;
+    background-color: whitesmoke;
 }
 
 /* Responsividade */
