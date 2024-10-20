@@ -22,17 +22,40 @@ cursor = conn.cursor()
 app = Flask(__name__, static_folder="static")
 
 # Rotas
+## 1. Início
 @app.route('/')
 def index():
     return render_template("dashboard.html")
 
+## 2. Encomendas
+@app.route('/encomendas')
+def rota_encomendas():
+    return render_template("encomendas.html")
+
+
+## 3. catalogo
+@app.route('/catalogo')
+def rota_catalogo():
+    return render_template("catalogo.html")
+
+
+## 4. Estoques
 @app.route('/produtos')
 def rota_produtos():
     return render_template("produtos.html")
 
+## 5. Vendas
+@app.route('/vendas')
+def rota_vendas():
+    return render_template("vendas.html")
+
+
+## 6. Relatórios
 @app.route('/relatorios')
 def rota_relatorios():
     return render_template("relatorios.html")
+
+
 
 # Função para retornar os dados
 def obter_dados_dashboard():

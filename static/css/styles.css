@@ -4,7 +4,7 @@
     --branco: #f9f9f9;
     --cinza-escuro: #36383F;
     --cinza: #85888C;
-    font-size: 16px; /* Define um tamanho base para 1rem */
+    font-size: 16px;
 }
 
 *{
@@ -18,6 +18,11 @@ body{
     font-family: "Poppins", sans-serif;
 }
 
+
+body:has(.side-menu:checked){
+    overflow: hidden;
+}
+
 a{
     text-decoration: none;
 }
@@ -27,7 +32,7 @@ ul{
 }
 
 input {
-    width: 50%; /* Mantém como porcentagem para responsividade */
+    width: 50%; 
 }
 
 .header{
@@ -39,9 +44,9 @@ input {
 }
 
 .logo{
-    width: 5rem; /* Aproximadamente 80px se o tamanho base for 16px */
-    height: 5rem;
-    margin: 0.3125rem; /* 5px */
+    width: 2.5rem; 
+    height: 2.5rem;
+    margin: 0.3125rem;
 }
 
 .nav{
@@ -54,7 +59,7 @@ input {
 
 .menu a{
     display: block;
-    padding: 1.875rem; /* 30px */
+    padding: 1.875rem; 
     color: black;
 }
 
@@ -70,7 +75,7 @@ input {
 .hamb{
     cursor: pointer;
     float: right;
-    padding: 2.5rem 1.25rem; /* 40px 20px */
+    padding: 2.5rem 1.25rem; 
 }
 
 .hamb-line {
@@ -127,8 +132,8 @@ input {
 }
 
 .content {
-    padding: 1.25rem;
-    padding-top: 0.5rem; /* Ajustado de 12vw */
+    padding-bottom: 1.25rem;
+    padding-top: 0.5rem;
     align-items: center;
 }
 
@@ -167,9 +172,63 @@ color: darkgreen;
 .tag {
     color:#85888C
 }
+.content-catalogo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
 
-body:has(.side-menu:checked){
-    overflow: hidden;
+
+.card-catalogo {
+    flex-basis: calc(3333.333% - 1rem);
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 0.75rem;
+    margin: 0 0 1.25rem 4rem;
+    padding: 1rem;
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+}
+
+.barra-pesquisa {
+    flex-shrink: 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 0.75rem;
+    height: 2.5rem;
+    margin: 0.2rem;
+    margin-top: 0.4rem;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 0 0.5rem;
+}
+
+.filtro-bloco {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 0.75rem;
+    margin: 0.50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#filtro-pesquisa {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 0.75rem;
+    height: 40rem;
+    width: 45rem;
+    margin-left: 0.75rem;
 }
 
 #painel {
@@ -202,6 +261,11 @@ color: red;
     border-style: solid;
     border-width: 1px;
     background-color: whitesmoke;
+}
+
+#catalogo {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 /* Responsividade */
