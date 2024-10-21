@@ -91,12 +91,12 @@ fetch('/api/dashboard')
 
 
 function preencherCatalogo(dados) {
-    const catalogoContainer = document.getElementById('catalogo');
+    const catalogoContainer = document.getElementById('grid-catalogo');
     catalogoContainer.innerHTML = ''; // Limpa o conteúdo existente
 
     dados.forEach(produto => {
         const card = document.createElement('div');
-        card.className = 'card-catalogo';
+        card.className = 'grid-card-catalogo';
         card.innerHTML = `
             <h5 class="produto-nome">${produto.nome_produto}</h5>
             <p class="produto-preco">R$ ${produto.preco.toFixed(2)}</p>

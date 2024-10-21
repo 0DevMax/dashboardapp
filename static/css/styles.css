@@ -1,79 +1,137 @@
+/* Importações */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-:root{
-    --branco: #f9f9f9;
-    --cinza-escuro: #36383F;
-    --cinza: #85888C;
-    font-size: 16px;
-}
-
-*{
+/* Seletores de elemento */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body{
+a {
+    text-decoration: none;
+}
+
+body {
     background-color: var(--branco);
     font-family: "Poppins", sans-serif;
     min-height: 100vh;
 }
 
-
-body:has(.side-menu:checked){
+body:has(.side-menu:checked) {
     overflow: hidden;
-}
-
-a{
-    text-decoration: none;
-}
-
-ul{
-    list-style: none;
 }
 
 input {
     width: 50%; 
 }
 
-.header{
-    background-color: var(--branco);
-    box-shadow: 1px 1px 5px 0px var(--cinza);
-    position: sticky;
-    top: 0;
-    width: 100%;
+ul {
+    list-style: none;
 }
 
-.logo{
-    width: 2.5rem; 
+/* Seletores de classe */
+.arrow-despesas {
+    color: #ad0000;
+}
+
+.arrow-faturamento {
+    color: darkgreen;
+}
+
+.barra-pesquisa {
+    align-items: center;
+    border-color: black;
+    border-radius: 0.75rem;
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    flex-shrink: 0;
     height: 2.5rem;
-    margin: 0.3125rem;
+    margin: 0.2rem;
+    margin-top: 0.4rem;
+    text-align: center;
+    width: 90%;
 }
 
-.nav{
+.conteudo {
+    text-align: center;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+}
+.card {
+    border-radius: 0.75rem;
+    height: 8.625rem; 
+    margin: 1.25rem;
+    padding: 1.25rem;
+    width: 19.25rem;
+}
+
+.cardInfoValor {
+    display: flex;
+    flex-direction: row;
+}
+
+.CardTitulo {
+    font-size: 1.25rem; 
+    font-weight: bold;
+    margin-bottom: 0.35rem;
+}
+
+.cardValor {
+    font-size: 1.10rem;
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+}
+
+.content-catalogo {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
     width: 100%;
-    height: 100%;
-    position: fixed;
-    background-color:white;
-    overflow: hidden;
 }
 
-.menu a{
-    display: block;
-    padding: 1.875rem; 
-    color: black;
+.filtro-bloco {
+    align-items: center;
+    border-color: black;
+    border-radius: 0.75rem;
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    margin: 0.50rem;
 }
 
-.menu a:hover{
-    background-color: var(--cinza);
+#grid-catalogo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
 }
 
-.nav{
-    max-height: 0;
-    transition: max-height .5s ease-out;
+.grid-card-catalogo {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fff;
+    font-size: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.hamb{
+.hamb {
     cursor: pointer;
     float: right;
     padding: 2.5rem 1.25rem; 
@@ -87,8 +145,8 @@ input {
     width: 24px;
 }
 
-.hamb-line::before,
-.hamb-line::after{
+.hamb-line::after,
+.hamb-line::before {
     background-color: black;
     content: '';
     display: block;
@@ -98,144 +156,115 @@ input {
     width: 100%;
 }
 
-.hamb-line::before{
-    top: 5px;
-}
-
-.hamb-line::after{
+.hamb-line::after {
     top: -5px;
 }
 
-.side-menu{
-    display: none; 
+.hamb-line::before {
+    top: 5px;
 }
 
-.side-menu:checked ~ nav{
-    max-height:100%;
-}
-
-.side-menu:checked ~ .hamb .hamb-line {
-   background: transparent;
-}
-
-.side-menu:checked ~ .hamb .hamb-line::before{
-    transform: rotate(-45deg);
-    top:0;
-}
-
-.side-menu:checked ~ .hamb .hamb-line::after{
-    transform: rotate(45deg);
+.header {
+    background-color: var(--branco);
+    box-shadow: 1px 1px 5px 0px var(--cinza);
+    position: sticky;
     top: 0;
+    width: 100%;
+}
+
+.logo {
+    height: 2.5rem;
+    margin: 0.3125rem;
+    width: 2.5rem; 
+}
+
+.menu a {
+    color: black;
+    display: block;
+    padding: 1.875rem; 
+}
+
+.menu a:hover {
+    background-color: var(--cinza);
 }
 
 .menu i {
     margin-right: 0.5vw;
 }
 
-.content {
-    padding-bottom: 1.25rem;
-    padding-top: 0.5rem;
-    align-items: center;
-}
-
-.content-catalogo {
+.nav {
+    background-color: white;
     height: 100%;
+    max-height: 0;
+    overflow: hidden;
+    position: fixed;
+    transition: max-height .5s ease-out;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-}
-
-
-.card {
-    margin: 1.25rem;
-    padding: 1.25rem;
-    height: 8.625rem; 
-    width: 19.25rem;
-    border-radius: 0.75rem;
-}
-
-.CardTitulo {
-    font-size: 1.25rem; 
-    margin-bottom: 0.35rem;
-    font-weight: bold;
-}
-
-.cardValor {
-    font-size: 1.10rem;
-}
-
-.cardInfoValor {
-    display: flex;
-    flex-direction: row;
-}
-
-.arrow-despesas {
-color: #ad0000;
-}
-
-.arrow-faturamento {
-color: darkgreen;
-}
-
-.tag {
-    color:#85888C
-}
-
-.card-catalogo {
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    border-radius: 0.75rem;
-    margin: 0 0 1.25rem 4rem;
-    padding: 1rem;
-    background-color: #fff;
-    box-shadow: 0px 0px 47px -20px rgb(128, 126, 126);
-    width: 15%;
-}
-
-.checkbox {
-    display: flex;
-    flex-direction: row;
-}
-
-.barra-pesquisa {
-    flex-shrink: 0;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    border-radius: 0.75rem;
-    height: 2.5rem;
-    margin: 0.2rem;
-    margin-top: 0.4rem;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
-
-.filtro-bloco {
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    border-radius: 0.75rem;
-    margin: 0.50rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#filtro-pesquisa {
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    border-radius: 0.75rem;
-    height: 40rem;
-    width: 45rem;
-    margin-left: 0.75rem;
 }
 
 .pesquisa {
+    width: 100%;
+}
+
+.side-menu {
+    display: none; 
+}
+
+.side-menu:checked ~ .hamb .hamb-line {
+   background: transparent;
+}
+
+.side-menu:checked ~ .hamb .hamb-line::after {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.side-menu:checked ~ .hamb .hamb-line::before {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.side-menu:checked ~ nav {
+    max-height: 100%;
+}
+
+.tag {
+    color: #85888C;
+}
+
+/* Seletores de ID */
+#CardEncomendas {
+    background-color: whitesmoke;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#cardInfoDespesas {
+    color: red;
+}
+
+#cardInfoFaturamento {
+    color: green;
+}
+
+#despesas {
+    background-color: #fa7171;
+}
+
+#faturamento {
+    background-color: #9cf79c;
+}
+
+#filtro-pesquisa {
+    border-color: black;
+    border-radius: 0.75rem;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#graficosContainer > div {
+    max-width: 600px;
     width: 100%;
 }
 
@@ -243,69 +272,34 @@ color: darkgreen;
     padding: 4.5vw;
 }
 
-#graficosContainer > div {
-    width: 100%;
-    max-width: 600px;
+/* Pseudo-classes e pseudo-elementos */
+:root {
+    --branco: #f9f9f9;
+    --cinza: #85888C;
+    --cinza-escuro: #36383F;
+    font-size: 16px;
 }
 
-#faturamento {
-    background-color: #9cf79c;
-}
-
-#despesas {
-    background-color: #fa7171;
-}
-
-#cardInfoFaturamento {
-color: green;
-}
-
-#cardInfoDespesas {
-color: red;
-}
-
-#CardEncomendas {
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
-    background-color: whitesmoke;
-}
-
-#catalogo {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
-}
-
-/* Responsividade */
+/* Media Queries */
 @media (min-width: 768px) {
-
-    .nav{
-        max-height: none;
-        top: 0;
-        position: relative;
-        float: right;
-        width: fit-content;
-        background-color: transparent;
-    }
-    .menu li{
-        float: left;
-    }
-    .menu a:hover{
-        background-color: transparent;
-        color: var(--gray);
-
+    .conteudo {
+        width: 70%;
     }
 
-    .hamb{
-        display: none;
+    #grid-catalogo {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-.input-form {
-    display: flex;
-    flex-direction: column;
+
+@media (min-width: 1024px) {
+    .conteudo {
+        width: 50%;
+    }
+
+    #grid-catalogo {
+        grid-template-columns: repeat(5,1fr);
+    }
 }
+
 
