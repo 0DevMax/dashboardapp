@@ -57,7 +57,7 @@ def rota_relatorios():
 
 
 
-# Função para retornar os dados
+# Função para retornar os dados dos relatórios
 def obter_dados_dashboard():
     dados_retornados_completo = {}
 
@@ -70,7 +70,7 @@ def obter_dados_dashboard():
                             JOIN produtos p ON v.produto_id = p.id
                             GROUP BY p.categoria
                             ORDER BY total_vendido DESC
-                    """
+                            """
         cur.execute(query_vendas_categoria)
         dash1 = {}
         for row in cur.fetchall():
@@ -84,7 +84,7 @@ def obter_dados_dashboard():
                         FROM vendas
                         GROUP by data
                         ORDER by data
-        """
+                        """
         cur.execute(query_vendas_dia)
         dash2 = {}
         for row in cur.fetchall():
@@ -96,10 +96,36 @@ def obter_dados_dashboard():
         return dados_retornados_completo
 
 
+#Função para retornar os dados do catálogo
+def obter_dados_catalogo():
+    dados_retornados_catalogo = []
+
+    with conn.cursor() as cur:
+        query_produtos = "SELECT id, nome_produto, preco, quantidade, categoria FROM produtos;"
+        cur.execute(query_produtos)
+        for row in cur.fetchall():
+            id, nome_produto, preco, quantidade, categoria = row
+            dados_retornados_catalogo.append({
+                'id': id,
+                'nome_produto': nome_produto,
+                'preco': float(preco),
+                'quantidade': quantidade,
+                'categoria': categoria
+            })
+    return dados_retornados_catalogo
+
 @app.route('/api/dashboard', methods=['GET'])
 def dashboard_dados():
     try:
         dados = obter_dados_dashboard()
+        return jsonify(dados)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+@app.route('/api/catalogo', methods=['GET'])
+def catalogo_dados():
+    try:
+        dados = obter_dados_catalogo()
         return jsonify(dados)
     except Exception as e:
         return jsonify({'error': str(e)}), 500

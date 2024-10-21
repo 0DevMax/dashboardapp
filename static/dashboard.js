@@ -88,3 +88,31 @@ fetch('/api/dashboard')
     .catch(error => {
         console.error('Erro ao buscar dados:', error);
     });
+
+
+function preencherCatalogo(dados) {
+    const catalogoContainer = document.getElementById('catalogo');
+    catalogoContainer.innerHTML = ''; // Limpa o conteúdo existente
+
+    dados.forEach(produto => {
+        const card = document.createElement('div');
+        card.className = 'card-catalogo';
+        card.innerHTML = `
+            <h5 class="produto-nome">${produto.nome_produto}</h5>
+            <p class="produto-preco">R$ ${produto.preco.toFixed(2)}</p>
+            <p class="produto-quantidade">Quantidade: ${produto.quantidade}</p>
+            <p class="produto-categoria">${produto.categoria}</p>
+        `;
+        catalogoContainer.appendChild(card);
+    });
+}
+
+fetch('/api/catalogo')
+    .then(response => response.json())
+    .then(data => {
+        console.log("Dados recebidos da API:", data);
+        preencherCatalogo(data);
+    })
+    .catch(error => {
+        console.error('Erro ao buscar dados do catálogo:', error);
+    });

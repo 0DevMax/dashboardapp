@@ -16,6 +16,7 @@
 body{
     background-color: var(--branco);
     font-family: "Poppins", sans-serif;
+    min-height: 100vh;
 }
 
 
@@ -137,6 +138,14 @@ input {
     align-items: center;
 }
 
+.content-catalogo {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
 
 .card {
     margin: 1.25rem;
@@ -172,21 +181,17 @@ color: darkgreen;
 .tag {
     color:#85888C
 }
-.content-catalogo {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-}
-
 
 .card-catalogo {
-    flex-basis: calc(3333.333% - 1rem);
     border-style: solid;
     border-width: 1px;
     border-color: black;
     border-radius: 0.75rem;
     margin: 0 0 1.25rem 4rem;
     padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0px 0px 47px -20px rgb(128, 126, 126);
+    width: 15%;
 }
 
 .checkbox {
@@ -207,7 +212,6 @@ color: darkgreen;
     display: flex;
     align-items: center;
     text-align: center;
-    padding: 0 0.5rem;
 }
 
 .filtro-bloco {
@@ -229,6 +233,10 @@ color: darkgreen;
     height: 40rem;
     width: 45rem;
     margin-left: 0.75rem;
+}
+
+.pesquisa {
+    width: 100%;
 }
 
 #painel {
@@ -266,10 +274,14 @@ color: red;
 #catalogo {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
 }
 
 /* Responsividade */
 @media (min-width: 768px) {
+
     .nav{
         max-height: none;
         top: 0;
@@ -296,3 +308,4 @@ color: red;
     display: flex;
     flex-direction: column;
 }
+
