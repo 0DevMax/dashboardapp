@@ -2,38 +2,33 @@
 
 {% block conteudo %}
 
-<div>
+<h2>Adicionar novo produto</h2>
 
-    <h1>Adicionar novo produto</h1>
+<div id="formulario">
+    <form>
+        <div class="input-form">
+            <label for="nome-produto">Nome</label>
+            <input id="nome-produto" name="nome-produto">
+        </div>
+        
+        <div class="input-form">
+            <label for="quantidade-produto">Quantidade</label>
+            <input id="quantidade-produto" name="quantidade-produto">
+        </div>
 
-    <div id="formulario">
-        <form>
-            <div class="input-form">
-                <label for="nome-produto">Nome</label>
-                <input id="nome-produto" name="nome-produto">
-            </div>
-            
-            <div class="input-form">
-                <label for="quantidade-produto">Quantidade</label>
-                <input id="quantidade-produto" name="quantidade-produto">
-            </div>
+        <div class="input-form">
+            <label for="preco-produto">Preço</label>
+            <input id="preco-produto" name="preco-produto">
+        </div>
 
-            <div class="input-form">
-                <label for="preco-produto">Preço</label>
-                <input id="preco-produto" name="preco-produto">
-            </div>
+        <div class="input-form">
+            <label for="categoria-produto">Categoria</label>
+            <input id="categoria-produto" name="categoria-produto">
+        </div>
 
-            <div class="input-form">
-                <label for="categoria-produto">Categoria</label>
-                <input id="categoria-produto" name="categoria-produto">
-            </div>
+        <button class="btn btn-4 btn-sep icon-send">Confirmar</button>
 
-            <button class="btn btn-4 btn-sep icon-send">Confirmar</button>
-
-        </form>
-    </div>
-
-
+    </form>
 </div>
 
 {% endblock %}

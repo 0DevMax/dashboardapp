@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/static/css/styles.css">
-    <link rel="stylesheet" href="/static/css/global.css"
+    <link rel="stylesheet" href="/static/css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
                 <li><a href="/"><i class="fa-solid fa-house"></i>Início</a></li>
                 <li><a href="/encomendas"><i class="fas fa-box"></i>Encomendas</a></li>
                 <li><a href="/catalogo"><i class="fas fa-store"></i>catalogo</a></li>
-                <li><a href="/estoque"><i class="fas fa-warehouse"></i>Estoques</a></li>
+                <li><a href="/estoques"><i class="fas fa-warehouse"></i>Estoques</a></li>
                 <li><a href="/vendas"><i class="fa-solid fa-money-bill"></i>Vendas</a></li>
                 <li><a href="/relatorios"><i class="fas fa-chart-bar"></i>Relatórios</a></li>
             </ul>
@@ -36,11 +36,10 @@
     </header>
     
     
-    
-        {% block conteudo %}
-
+    <div class="conteudo">
+        {% block conteudo %}        
         {% endblock %}
-    
+    </div>
     
 
     <script type='module' src="{{ url_for('static', filename='dashboard.js') }}"></script>

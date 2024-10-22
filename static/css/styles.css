@@ -23,11 +23,17 @@ body:has(.side-menu:checked) {
 }
 
 input {
-    width: 50%; 
+    width: 90%; 
 }
+
+
 
 ul {
     list-style: none;
+}
+
+h2 {
+    margin-bottom: 3.5rem;
 }
 
 /* Seletores de classe */
@@ -57,10 +63,12 @@ ul {
 .conteudo {
     text-align: center;
     width: 90%;
-    display: flex;
     flex-direction: column;
-    align-items: stretch;
     gap: 16px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .card {
     border-radius: 0.75rem;
@@ -171,6 +179,24 @@ ul {
     position: sticky;
     top: 0;
     width: 100%;
+}
+
+.input-form {
+    display: block;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.input-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.input-form input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .logo {
@@ -295,9 +321,13 @@ ul {
 
 
 @media (min-width: 1024px) {
+
+    input {
+        width: 250px;
+    }
     .conteudo {
         width: 50%;
-        margin: 0 auto;
+        height: 50%;
     }
 
     #grid-catalogo {

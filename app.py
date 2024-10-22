@@ -33,16 +33,16 @@ def rota_encomendas():
     return render_template("encomendas.html")
 
 
-## 3. catalogo
+## 3. Catálogo
 @app.route('/catalogo')
 def rota_catalogo():
     return render_template("catalogo.html")
 
 
 ## 4. Estoques
-@app.route('/produtos')
+@app.route('/estoques')
 def rota_produtos():
-    return render_template("produtos.html")
+    return render_template("estoques.html")
 
 ## 5. Vendas
 @app.route('/vendas')
