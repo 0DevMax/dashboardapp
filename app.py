@@ -1,7 +1,7 @@
 import psycopg2
 import os
 from dotenv import load_dotenv
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, Blueprint
 import datetime
 
 
@@ -22,6 +22,7 @@ cursor = conn.cursor()
 app = Flask(__name__, static_folder="static")
 
 # Rotas
+
 ## 1. Início
 @app.route('/')
 def index():
@@ -114,7 +115,9 @@ def obter_dados_catalogo():
             })
     return dados_retornados_catalogo
 
-@app.route('/api/dashboard', methods=['GET'])
+api = Blueprint('api', __name__)
+
+@api.route('/dashboard', methods=['GET'])
 def dashboard_dados():
     try:
         dados = obter_dados_dashboard()
@@ -122,13 +125,16 @@ def dashboard_dados():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
-@app.route('/api/catalogo', methods=['GET'])
+@api.route('/catalogo', methods=['GET'])
 def catalogo_dados():
     try:
         dados = obter_dados_catalogo()
         return jsonify(dados)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+
+app.register_blueprint(api, url_prefix='/api')
 
 if __name__ == '__main__':
     app.run(port=7000, debug=True)
