@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="container">
+
+    <div class="grafico-container">
+        <canvas id="graficoVendas"></canvas>
+    </div>
+
+    <table id="dadosTabela">
+        <thead>
+            <tr>
+                <th>ID da venda</th>
+                <th>Data</th>
+                <th>ID do produto</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dados inseridos -->
+        </tbody>
+    </table>
+</div>
+
+{% endblock %} 

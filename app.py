@@ -115,6 +115,22 @@ def obter_dados_catalogo():
             })
     return dados_retornados_catalogo
 
+def obter_dados_vendas():
+    dados_retornados_vendas = []
+
+    with conn.cursor() as cur:
+        query_vendas = "SELECT id, data, produto_id, quantidade FROM vendas;"
+        cur.execute(query_vendas)
+        for row in cur.fetchall():
+            id, data, produto_id, quantidade = row
+            dados_retornados_vendas.append({
+                'id': id,
+                'data': data,
+                'produto_id': produto_id,
+                'quantidade': quantidade
+            })
+    return dados_retornados_vendas
+
 api = Blueprint('api', __name__)
 
 @api.route('/dashboard', methods=['GET'])
@@ -129,6 +145,14 @@ def dashboard_dados():
 def catalogo_dados():
     try:
         dados = obter_dados_catalogo()
+        return jsonify(dados)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+@api.route('/vendas')
+def vendas_dados():
+    try:
+        dados = obter_dados_vendas()
         return jsonify(dados)
     except Exception as e:
         return jsonify({'error': str(e)}), 500

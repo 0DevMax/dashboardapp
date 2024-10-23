@@ -116,3 +116,86 @@ fetch('/api/catalogo')
     .catch(error => {
         console.error('Erro ao buscar dados do catálogo:', error);
     });
+
+
+//  API de vendas
+
+async function fetchData() {
+    try {
+        const response = await fetch('/api/vendas');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+        return [];
+    }
+}
+
+function criarTabela(data) {
+    const tbody = document.querySelector('#dadosTabela tbody');
+    tbody.innerHTML = '';
+
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.id}</td>
+            <td>${item.data}</td>
+            <td>${item.produto_id}</td>
+            <td>${item.quantidade}</td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function criarGrafico(data) {
+    const ctx = document.getElementById('graficoVendas');
+    if (!ctx) {
+        console.error('Elemento graficoVendas não encontrado');
+        return;
+    }
+
+    const produtoIds = data.map(item => item.produto_id);
+    const quantidades = data.map(item => item.quantidade);
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: produtoIds,
+            datasets: [{
+                data: quantidades,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+async function initialize() {
+    const data = await fetchData();
+    criarTabela(data);
+    criarGrafico(data);
+}
+
+document.addEventListener('DOMContentLoaded', initialize);
