@@ -194,7 +194,6 @@ function criarGrafico(data) {
 
 async function initialize() {
     const data = await fetchData();
-    criarTabela(data);
     criarGrafico(data);
 }
 

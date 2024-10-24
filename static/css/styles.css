@@ -323,6 +323,14 @@ h2 {
     margin-bottom: 20px;
 }
 
+.cardConteudo {
+    height: 60%;
+    width: 60%;
+    display: grid;
+    gap: 4px;
+    margin: auto;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

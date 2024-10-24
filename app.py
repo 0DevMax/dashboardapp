@@ -115,6 +115,7 @@ def obter_dados_catalogo():
             })
     return dados_retornados_catalogo
 
+#Função para retornar os dados das vendas
 def obter_dados_vendas():
     dados_retornados_vendas = []
 
