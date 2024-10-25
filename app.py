@@ -132,6 +132,9 @@ def obter_dados_vendas():
             })
     return dados_retornados_vendas
 
+
+# APIs
+
 api = Blueprint('api', __name__)
 
 @api.route('/dashboard', methods=['GET'])
