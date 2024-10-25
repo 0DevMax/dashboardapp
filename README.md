@@ -97,10 +97,8 @@ O sistema estará disponível em `http://localhost:7000`
 
 ## 👥 Contribuição
 
-Contribuições são sempre bem-vindas! Por favor, siga estes passos:
+Contribuições são sempre bem-vindas!
 
 
-Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para mais detalhes.
 
-
-Desenvolvido com ❤️ por Max(https://github.com/0DevMax)
+Desenvolvido com ❤️ por Max
