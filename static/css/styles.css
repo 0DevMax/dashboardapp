@@ -36,6 +36,38 @@ h2 {
     margin-bottom: 3.5rem;
 }
 
+table {
+    border: 2px solid gray;
+}
+
+table thead tr {
+    display: none;
+}
+
+table tr {
+    display: block;
+}
+
+table th, table td {
+    padding: .5em;
+}
+
+table td{
+    text-align: right;
+    display: block;
+    font-size: 1em;
+}
+
+table td::before{
+    content: attr(data-title) ": ";
+    float: left;
+}
+
+tbody tr:nth-child(even){
+    background-color: rgb(223, 223, 223);
+}
+
+
 /* Seletores de classe */
 .arrow-despesas {
     color: #ad0000;
@@ -317,6 +349,7 @@ h2 {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 8px;
+    overflow-x: auto;
 }
 
 .grafico-container {
@@ -379,5 +412,6 @@ tr:hover {
         grid-template-columns: repeat(5,1fr);
     }
 }
+
 
 

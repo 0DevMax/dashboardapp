@@ -120,7 +120,7 @@ def obter_dados_vendas():
     dados_retornados_vendas = []
 
     with conn.cursor() as cur:
-        query_vendas = "SELECT id, data, produto_id, quantidade FROM vendas;"
+        query_vendas = "SELECT id, TO_CHAR(data, 'dd/mm/yyyy'), produto_id, quantidade FROM vendas;"
         cur.execute(query_vendas)
         for row in cur.fetchall():
             id, data, produto_id, quantidade = row

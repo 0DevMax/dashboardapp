@@ -138,10 +138,10 @@ function criarTabela(data) {
     data.forEach(item => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${item.id}</td>
-            <td>${item.data}</td>
-            <td>${item.produto_id}</td>
-            <td>${item.quantidade}</td>
+            <td data-title="ID">${item.id}</td>
+            <td data-title="Data">${item.data}</td>
+            <td data-title="Produto">${item.produto_id}</td>
+            <td data-title="Qtd">${item.quantidade}</td>
         `;
         tbody.appendChild(row);
     });
