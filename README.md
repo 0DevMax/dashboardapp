@@ -95,6 +95,4 @@ O sistema estará disponível em `http://localhost:7000`
 | `/api/vendas` | GET | Dados de vendas |
 
 
-## Contribuição
-
 Contribuições são sempre bem-vindas!
