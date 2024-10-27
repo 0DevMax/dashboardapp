@@ -1,10 +1,10 @@
-# 🏪 Sistema de Gerenciamento de Loja
+# Sistema de Gerenciamento de Loja
 
 Sistema web completo para gerenciamento de lojas que oferece uma experiência intuitiva no controle de vendas, estoque e visualização de relatórios.
 
 
 
-## 📋 Índice
+## Índice
 
 - [Funcionalidades](#-funcionalidades)
 - [Tecnologias](#-tecnologias)
@@ -12,16 +12,16 @@ Sistema web completo para gerenciamento de lojas que oferece uma experiência in
 - [Instalação](#-instalação)
 - [API](#-api)
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 ### Módulos Principais
-- 📦 **Encomendas**: Gestão completa de pedidos
-- 📝 **Catálogo**: Gerenciamento de produtos
-- 📊 **Estoques**: Controle de inventário
-- 💰 **Vendas**: Registro e acompanhamento
-- 📈 **Relatórios**: Análises detalhadas
+-  **Encomendas**: Gestão completa de pedidos
+-  **Catálogo**: Gerenciamento de produtos
+-  **Estoques**: Controle de inventário
+-  **Vendas**: Registro e acompanhamento
+-  **Relatórios**: Análises detalhadas
 
-## 🚀 Tecnologias
+## Tecnologias
 
 ### Backend
 - **Flask** (Python)
@@ -35,23 +35,23 @@ Sistema web completo para gerenciamento de lojas que oferece uma experiência in
 - Chart.js
 - DataTables
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
-📦 gerenciador-de-loja/
-├── 📂 app/
-│   ├── 📜 app.py
-│   ├── 📂 templates/
-│   │   ├── 📜 dashboard.html
-│   │   └── 📜 ...
-│   └── 📂 static/
-│       ├── 📂 css/
-│       └── 📂 js/
-├── 📜 requirements.txt
-└── 📜 .env.example
+gerenciador-de-loja/
+├── app/
+│   ├── app.py
+│   ├── templates/
+│   │   ├── dashboard.html
+│   │   └── ...
+│   └── static/
+│       ├── css/
+│       └── js/
+├── requirements.txt
+└── .env.example
 ```
 
-## 🔧 Instalação
+## Instalação
 
 1. Clone o repositório
 ```bash
@@ -84,7 +84,7 @@ python app.py
 
 O sistema estará disponível em `http://localhost:7000`
 
-## 🔌 API
+## APIs
 
 ### Endpoints Principais
 
@@ -95,7 +95,7 @@ O sistema estará disponível em `http://localhost:7000`
 | `/api/vendas` | GET | Dados de vendas |
 
 
-## 👥 Contribuição
+## Contribuição
 
 Contribuições são sempre bem-vindas!
 
