@@ -1,3 +1,4 @@
+// DASHBOARD
 // Função para buscar e exibir gráficos do dashboard da página inicial
 fetch('/api/dashboard')
     .then(response => response.json())
@@ -90,6 +91,8 @@ fetch('/api/dashboard')
         console.error('Erro ao buscar dados:', error);
     });
 
+
+// CATÁLOGO
 // Função para preencher o catálogo de produtos no DOM
 function preencherCatalogo(dados) {
     const catalogoContainer = document.getElementById('grid-catalogo');
@@ -119,8 +122,10 @@ fetch('/api/catalogo')
         console.error('Erro ao buscar dados do catálogo:', error);
     });
 
+
+// VENDAS
 // Função para buscar dados de vendas
-async function fetchData() {
+async function fetchVendasData() {
     try {
         const response = await fetch('/api/vendas');
         const data = await response.json();
@@ -132,7 +137,7 @@ async function fetchData() {
 }
 
 // Função para preencher a tabela de vendas com dados recebidos
-function criarTabela(data) {
+function criarTabelaVendas(data) {
     const tbody = document.querySelector('#tabelaVendas tbody');
     tbody.innerHTML = '';
 
@@ -149,9 +154,50 @@ function criarTabela(data) {
 }
 
 // Inicialização da tabela de vendas ao carregar a página
-async function initialize() {
-    const data = await fetchData();
-    criarTabela(data);
+async function initializeVendas() {
+    const data = await fetchVendasData();
+    criarTabelaVendas(data);
 }
 
-document.addEventListener('DOMContentLoaded', initialize);
+document.addEventListener('DOMContentLoaded', initializeVendas);
+
+
+// ENCOMENDAS
+// Função para buscar dados de encomendas
+async function fetchEncomendasData() {
+    try {
+        const response = await fetch('/api/encomendas');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+        return [];
+    }
+}
+
+ //Função para preencher a tabela de encomendas com dados recebidos
+ function criarTabelaEncomendas(data) {
+    const tbody = document.querySelector('#tabelaEncomendas tbody');
+    tbody.innerHTML = '';
+
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td data-title="ID">${item.id}</td>
+            <td data-title="Cliente">${item.cliente}</td>
+            <td data-title="Contato">${item.contato}</td>
+            <td data-title="Produto">${item.produto}</td>
+            <td data-title="Observações">${item.observações}</td>
+            <td data-title="Qtd">${item.qtd}</td>
+        `;
+        tbody.appendChild(row);
+    });
+ }
+
+ // Inicialização da tabela de encomendas ao carregar a página
+ async function initializeEncomendas() {
+    const data = await fetchEncomendasData();
+    criarTabelaEncomendas(data);
+ }
+
+ document.addEventListener('DOMContentLoaded', initializeEncomendas);

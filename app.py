@@ -133,6 +133,26 @@ def obter_dados_vendas():
     return dados_retornados_vendas
 
 
+#Função para retornar os dados das encomendas
+def obter_dados_encomendas():
+    dados_retornados_encomendas = []
+
+    with conn.cursor() as cur:
+        query_encomendas = "SELECT id, cliente, contato, produto, observações, qtd FROM encomendas;"
+        cur.execute(query_encomendas)
+        for row in cur.fetchall():
+            id, cliente, contato, produto, observações, qtd = row
+            dados_retornados_encomendas.append({
+                'ID': id,
+                'Cliente': cliente,
+                'Contato': contato,
+                'Produto': produto,
+                'Observações': observações,
+                'Qtd': qtd
+            })
+            return dados_retornados_encomendas
+
+
 # APIs
 
 api = Blueprint('api', __name__)
@@ -161,6 +181,13 @@ def vendas_dados():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
+@api.route('/encomendas')
+def encomendas_dados():
+    try:
+        dados = obter_dados_encomendas()
+        return jsonify(dados)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 app.register_blueprint(api, url_prefix='/api')
 
