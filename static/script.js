@@ -1,3 +1,4 @@
+// Função para buscar e exibir gráficos do dashboard da página inicial
 fetch('/api/dashboard')
     .then(response => response.json())
     .then(data => {
@@ -89,10 +90,10 @@ fetch('/api/dashboard')
         console.error('Erro ao buscar dados:', error);
     });
 
-
+// Função para preencher o catálogo de produtos no DOM
 function preencherCatalogo(dados) {
     const catalogoContainer = document.getElementById('grid-catalogo');
-    catalogoContainer.innerHTML = ''; // Limpa o conteúdo existente
+    catalogoContainer.innerHTML = '';
 
     dados.forEach(produto => {
         const card = document.createElement('div');
@@ -107,6 +108,7 @@ function preencherCatalogo(dados) {
     });
 }
 
+// Busca e exibe os dados do catálogo de produtos
 fetch('/api/catalogo')
     .then(response => response.json())
     .then(data => {
@@ -117,9 +119,7 @@ fetch('/api/catalogo')
         console.error('Erro ao buscar dados do catálogo:', error);
     });
 
-
-//  API de vendas
-
+// Função para buscar dados de vendas
 async function fetchData() {
     try {
         const response = await fetch('/api/vendas');
@@ -131,8 +131,9 @@ async function fetchData() {
     }
 }
 
+// Função para preencher a tabela de vendas com dados recebidos
 function criarTabela(data) {
-    const tbody = document.querySelector('#dadosTabela tbody');
+    const tbody = document.querySelector('#tabelaVendas tbody');
     tbody.innerHTML = '';
 
     data.forEach(item => {
@@ -147,6 +148,7 @@ function criarTabela(data) {
     });
 }
 
+// Inicialização da tabela de vendas ao carregar a página
 async function initialize() {
     const data = await fetchData();
     criarTabela(data);
