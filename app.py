@@ -1,7 +1,7 @@
 import psycopg2
 import os
 from dotenv import load_dotenv
-from flask import Flask, render_template, jsonify, Blueprint
+from flask import Flask, render_template, jsonify, Blueprint, make_response
 import datetime
 
 
@@ -20,6 +20,22 @@ cursor = conn.cursor()
 
 
 app = Flask(__name__, static_folder="static")
+
+@app.after_request
+def add_security_headers(response):
+    response.headers['Content-Security-Policy'] = (
+        "default-src 'self'; "
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' "
+        "https://code.jquery.com https://cdn.datatables.net https://cdn.jsdelivr.net; "
+        "script-src-elem 'self' https://code.jquery.com https://cdn.datatables.net https://cdn.jsdelivr.net; "
+        "style-src 'self' 'unsafe-inline' https://cdn.datatables.net https://fonts.googleapis.com; "
+        "style-src-elem 'self' https://fonts.googleapis.com; "
+        "img-src 'self' data:; "
+        "font-src 'self' data:; "
+        "connect-src 'self'; "
+    )
+    return response
+
 
 # Rotas
 
@@ -143,14 +159,14 @@ def obter_dados_encomendas():
         for row in cur.fetchall():
             id, cliente, contato, produto, observações, qtd = row
             dados_retornados_encomendas.append({
-                'ID': id,
-                'Cliente': cliente,
-                'Contato': contato,
-                'Produto': produto,
-                'Observações': observações,
-                'Qtd': qtd
+                'id': id,
+                'cliente': cliente,
+                'contato': contato,
+                'produto': produto,
+                'observações': observações,
+                'qtd': qtd
             })
-            return dados_retornados_encomendas
+        return dados_retornados_encomendas
 
 
 # APIs
