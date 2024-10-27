@@ -98,7 +98,3 @@ O sistema estará disponível em `http://localhost:7000`
 ## Contribuição
 
 Contribuições são sempre bem-vindas!
-
-
-
-Desenvolvido com ❤️ por Max
