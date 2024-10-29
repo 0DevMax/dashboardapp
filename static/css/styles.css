@@ -92,15 +92,34 @@ tbody tr:nth-child(even){
     width: 90%;
 }
 
+.btn-estoques {
+    background: linear-gradient(#005f73, #0a9396);
+    color: white;
+    padding: 15px 25px 15px 15px;
+    border-radius: 9px;
+    text-decoration: none;
+    height: 50px;
+    width: 250px;
+    margin: 30px;
+
+}
+
+.btn-estoques:hover {
+    background-color: white;
+    color: rgba(149,67,249,255);
+}
+
 .conteudo {
     text-align: center;
     width: 90%;
+    height: 90%;
     flex-direction: column;
     gap: 16px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
 }
 .card {
     border-radius: 0.75rem;
@@ -139,6 +158,7 @@ tbody tr:nth-child(even){
     flex-direction: row;
     width: 100%;
 }
+
 
 .filtro-bloco {
     align-items: center;
@@ -345,11 +365,15 @@ tbody tr:nth-child(even){
 .container {
     width: 90%;
     height: 90%;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 10px auto;
+    padding: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 8px;
     overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .grafico-container {

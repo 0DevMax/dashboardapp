@@ -58,8 +58,20 @@ def rota_catalogo():
 
 ## 4. Estoques
 @app.route('/estoques')
-def rota_produtos():
+def rota_estoques():
     return render_template("estoques.html")
+
+@app.route('/estoques/novo-item')
+def rota_novo_produto():
+    return render_template("estoques-novo-item.html")
+
+@app.route('/estoques-produtos')
+def rota_produtos():
+    return render_template("estoques-produtos.html")
+
+@app.route('/estoques-materiais')
+def rota_materiais():
+    return render_template("estoques-materiais.html")   # Estudar meio de reduzir /estoques/ a uma única página dinâmica
 
 ## 5. Vendas
 @app.route('/vendas')
@@ -167,6 +179,27 @@ def obter_dados_encomendas():
                 'qtd': qtd
             })
         return dados_retornados_encomendas
+    
+# Função para retornar os dados dos produtos
+def obter_dados_produtos():
+    dados_retornados_produtos = []
+
+    with conn.cursor() as cur:
+        query_produtos = """
+                        SELECT id, nome_produto, preco, quantidade, categoria 
+                        FROM produtos;
+                        """
+        cur.execute(query_produtos)
+        for row in cur.fetchall():
+            id, nome_produto, preco, quantidade, categoria = row
+            dados_retornados_produtos.append({
+                'id': id,
+                'nome_produto': nome_produto,
+                'preco': preco,
+                'quantidade': quantidade,
+                'categoria': categoria
+            })
+    return dados_retornados_produtos
 
 
 # APIs
@@ -201,6 +234,14 @@ def vendas_dados():
 def encomendas_dados():
     try:
         dados = obter_dados_encomendas()
+        return jsonify(dados)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+@api.route('/estoques-produtos')
+def produtos_dados():
+    try:
+        dados = obter_dados_produtos()
         return jsonify(dados)
     except Exception as e:
         return jsonify({'error': str(e)}), 500

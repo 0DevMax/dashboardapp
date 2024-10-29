@@ -93,7 +93,7 @@ fetch('/api/dashboard')
 
 
 // CATÁLOGO
-// Função para preencher o catálogo de produtos no DOM
+// Função para preencher o catálogo de produtos
 function preencherCatalogo(dados) {
     const catalogoContainer = document.getElementById('grid-catalogo');
     catalogoContainer.innerHTML = '';
@@ -122,6 +122,58 @@ fetch('/api/catalogo')
         console.error('Erro ao buscar dados do catálogo:', error);
     });
 
+
+// ESTOQUES / Produtos
+// Função para buscar dados dos produtos
+async function fetchProdutosData() {
+    try {
+        const response = await fetch('/api/estoques-produtos');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Erro ao buscar dados:', error)
+        return [];
+    }
+}
+
+//Função para preencher a tabela de produtos com dados recebidos
+function criarTabelaProdutos(data) {
+    const tbody = document.querySelector('#tabelaProdutos tbody');
+    tbody.innerHTML = '';
+
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td data-title="ID">${item.id}</td>
+            <td data-title="Produto">${item.nome_produto}</td>
+            <td data-title="Preço">${item.preco}</td>
+            <td data-title="Qtd">${item.quantidade}</td>
+            <td data-title="Categoria">${item.categoria}</td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+// Inicialização da tabela de produtos ao carregar a página
+async function initializeProdutos() {
+    const data = await fetchProdutosData();
+    criarTabelaProdutos(data);
+}
+
+document.addEventListener('DOMContentLoaded', initializeProdutos);
+
+// Busca e exibe os dados dos produtos
+fetch('/api/estoques-produtos')
+    .then(response => response.json())
+    .then(data => {
+        console.log("Dados recebidos da API:", data);
+        criarTabelaProdutos(data);
+    })
+    .catch(error => {
+        console.error('Erro ao buscar dados do catálogo:', error);
+    });
+
+// Estoques / Materiais Produtos
 
 // VENDAS
 // Função para buscar dados de vendas

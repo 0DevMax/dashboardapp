@@ -1,34 +1,11 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 {% block conteudo %}
 
-<h2>Adicionar novo produto</h2>
-
-<div id="formulario">
-    <form>
-        <div class="input-form">
-            <label for="nome-produto">Nome</label>
-            <input id="nome-produto" name="nome-produto">
-        </div>
-        
-        <div class="input-form">
-            <label for="quantidade-produto">Quantidade</label>
-            <input id="quantidade-produto" name="quantidade-produto">
-        </div>
-
-        <div class="input-form">
-            <label for="preco-produto">Preço</label>
-            <input id="preco-produto" name="preco-produto">
-        </div>
-
-        <div class="input-form">
-            <label for="categoria-produto">Categoria</label>
-            <input id="categoria-produto" name="categoria-produto">
-        </div>
-
-        <button class="btn btn-4 btn-sep icon-send">Confirmar</button>
-
-    </form>
+<div class="container">
+    <a class="btn-estoques" href="/estoques/novo-item">Adicionar novo item</a>
+    <a class="btn-estoques" href="/estoques-produtos">Estoque de produtos</a>
+    <a class="btn-estoques" href="/estoques/materiais">Estoque de materiais</a>
 </div>
 
 {% endblock %}
