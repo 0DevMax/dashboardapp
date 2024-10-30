@@ -162,18 +162,45 @@ async function initializeProdutos() {
 
 document.addEventListener('DOMContentLoaded', initializeProdutos);
 
-// Busca e exibe os dados dos produtos
-fetch('/api/estoques-produtos')
-    .then(response => response.json())
-    .then(data => {
-        console.log("Dados recebidos da API:", data);
-        criarTabelaProdutos(data);
-    })
-    .catch(error => {
-        console.error('Erro ao buscar dados do catálogo:', error);
-    });
+// Estoques / Materiais
+//Função para buscar dados dos materiais com a API
+async function fetchMateriaisData() {
+    try {
+        const response = await fetch('/api/estoques-materiais');
+        const data = await response.json();
+        return data;
+    } catch (error){
+        console.error('Erro ao buscar os dados:', error)
+        return [];
+    }
+}
 
-// Estoques / Materiais Produtos
+//Desempacotamento de 'data' e iteração para criar tabela
+function criarTabelaMateriais(data) {
+    const tbody = document.querySelector('#tabelaMateriais tbody');
+    tbody.innerHTML = '';
+
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td data-title="ID">${item.id}</td>
+            <td data-title="nome_material"><${item.nome_material}</td>
+            <td data-title-"fornecedor">${item.fornecedor}</td>
+            <td data-title-"qtd">${item.qtd}</td>
+            <td data-title-"preco">${item.preco}</td>
+            <td data-title-"custo_total">${item.custo_total}</td>
+            <td data-title-"data">${item.data}</td>
+        `;
+        tbody.append(row);
+    });
+}
+
+async function initializeMateriais() {
+    const data = await fetchMateriaisData();
+    criarTabelaMateriais(data);
+}
+
+document.addEventListener('DOMContentLoaded', initializeMateriais);
 
 // VENDAS
 // Função para buscar dados de vendas
@@ -253,3 +280,4 @@ async function fetchEncomendasData() {
  }
 
  document.addEventListener('DOMContentLoaded', initializeEncomendas);
+

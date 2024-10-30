@@ -185,10 +185,7 @@ def obter_dados_produtos():
     dados_retornados_produtos = []
 
     with conn.cursor() as cur:
-        query_produtos = """
-                        SELECT id, nome_produto, preco, quantidade, categoria 
-                        FROM produtos;
-                        """
+        query_produtos = "SELECT id, nome_produto, preco, quantidade, categoria FROM produtos;"
         cur.execute(query_produtos)
         for row in cur.fetchall():
             id, nome_produto, preco, quantidade, categoria = row
@@ -200,6 +197,27 @@ def obter_dados_produtos():
                 'categoria': categoria
             })
     return dados_retornados_produtos
+
+
+# Função para retornar dados dos materiais
+def obter_dados_materiais():
+    dados_retornados_materiais = []
+
+    with conn.cursor() as cur:
+        query_materiais = "SELECT id, nome_material, fornecedor, qtd, preco, custo_total,data FROM materiais;"
+        cur.execute(query_materiais)
+        for row in cur.fetchall():
+            id, nome_material, fornecedor, qtd, preco, custo_total, data = row
+            dados_retornados_materiais.append({
+                'id': id,
+                'nome_material': nome_material,
+                'fornecedor': fornecedor,
+                'qtd': qtd,
+                'preco': preco,
+                'custo_total': custo_total,
+                'data': data,
+            })
+    return dados_retornados_materiais
 
 
 # APIs
@@ -242,6 +260,14 @@ def encomendas_dados():
 def produtos_dados():
     try:
         dados = obter_dados_produtos()
+        return jsonify(dados)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+@api.route('/estoques-materiais')
+def materiais_dados():
+    try:
+        dados = obter_dados_materiais()
         return jsonify(dados)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
