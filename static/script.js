@@ -184,12 +184,12 @@ function criarTabelaMateriais(data) {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td data-title="ID">${item.id}</td>
-            <td data-title="nome_material"><${item.nome_material}</td>
-            <td data-title-"fornecedor">${item.fornecedor}</td>
-            <td data-title-"qtd">${item.qtd}</td>
-            <td data-title-"preco">${item.preco}</td>
-            <td data-title-"custo_total">${item.custo_total}</td>
-            <td data-title-"data">${item.data}</td>
+            <td data-title="nome_material">${item.nome_material}</td>
+            <td data-title="fornecedor">${item.fornecedor}</td>
+            <td data-title="qtd">${item.qtd}</td>
+            <td data-title="preco">${item.preco}</td>
+            <td data-title="custo_total">${item.custo_total}</td>
+            <td data-title="data">${item.data}</td>
         `;
         tbody.append(row);
     });

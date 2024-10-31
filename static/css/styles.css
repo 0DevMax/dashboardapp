@@ -354,6 +354,12 @@ tbody tr:nth-child(even){
     padding: 4.5vw;
 }
 
+#tabelaMateriais {
+
+    max-height: 750px;
+    overflow-y: auto;
+}
+
 /* Pseudo-classes e pseudo-elementos */
 :root {
     --branco: #f9f9f9;
@@ -387,12 +393,6 @@ tbody tr:nth-child(even){
     display: grid;
     gap: 4px;
     margin: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
 }
 
 th, td {
