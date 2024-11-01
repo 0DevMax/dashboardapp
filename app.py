@@ -78,6 +78,13 @@ def rota_materiais():
 def rota_vendas():
     return render_template("vendas.html")
 
+@app.route('/vendas-registros')
+def rota_vendas_registros():
+    return render_template("vendas-registros.html")
+
+@app.route('/vendas-registrar')
+def rota_vendas_registrar():
+    return render_template("vendas-registrar.html")
 
 ## 6. Relatórios
 @app.route('/relatorios')
@@ -240,7 +247,7 @@ def catalogo_dados():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
-@api.route('/vendas')
+@api.route('/vendas-registros')
 def vendas_dados():
     try:
         dados = obter_dados_vendas()

@@ -1,22 +1,12 @@
-{% extends 'base.html' %}
+{%extends 'base.html' %}
 
 {% block conteudo %}
 
-<div class="container">
+<!-- Dois botões 1. Ver vendas 2. Registrar venda-->
 
-    <table id="tabelaVendas">
-        <thead>
-            <tr>
-                <th>Venda</th>
-                <th>Data</th>
-                <th>Produto</th>
-                <th>Quantidade</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Dados inseridos pelo script -->
-        </tbody>
-    </table>
+<div class="container">
+    <a class="botao" href="/vendas-registros">Visualizar vendas</a>
+    <a class="botao" href="/vendas-registrar">Registrar venda</a>
 </div>
 
-{% endblock %} 
+{% endblock %}

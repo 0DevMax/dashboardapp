@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<!--
+
+*** Opções ***
+
+- Data (Evoluir para calendário clicável)
+- Produto (Evoluir para campo de input que abre lista de sugestões abaixo)
+- Quantidade 
+- Preço
+- Botão de enviar
+-->
+
+<div class="container">
+
+    <h2>Nova venda</h2>
+
+    <div id="formulario">
+        <form>
+            <div class="input-form">
+                <label for="data-venda">Data</label>
+                <input id="data-venda" name="data-venda">
+            </div>
+            
+            <div class="input-form">
+                <label for="produto-vendido">Produto</label>
+                <input id="produto-vendido" name="produto-vendido">
+            </div>
+
+            <div class="input-form">
+                <label for="preco-vendido">Preço</label>
+                <input id="preco-vendido" name="preco-vendido">
+            </div>
+
+            <div class="input-form">
+                <label for="quantidade-vendida">Quantidade</label>
+                <input id="quantidade-vendida" name="quantidade-vendida">
+            </div>
+
+            <button class="botao">Confirmar</button>
+
+        </form>
+    </div>
+
+</div>
+
+{% endblock %} 

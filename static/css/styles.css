@@ -22,6 +22,10 @@ body:has(.side-menu:checked) {
     overflow: hidden;
 }
 
+h2 {
+    margin-bottom: 3.5rem;
+}
+
 input {
     width: 90%; 
 }
@@ -32,9 +36,6 @@ ul {
     list-style: none;
 }
 
-h2 {
-    margin-bottom: 3.5rem;
-}
 
 table {
     border: 2px solid gray;
@@ -92,7 +93,7 @@ tbody tr:nth-child(even){
     width: 90%;
 }
 
-.btn-estoques {
+.botao {
     background: linear-gradient(#005f73, #0a9396);
     color: white;
     padding: 15px 25px 15px 15px;
@@ -104,7 +105,7 @@ tbody tr:nth-child(even){
 
 }
 
-.btn-estoques:hover {
+.botao:hover {
     background-color: white;
     color: rgba(149,67,249,255);
 }
@@ -171,12 +172,6 @@ tbody tr:nth-child(even){
     margin: 0.50rem;
 }
 
-#grid-catalogo {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-    margin: 20px 0 0 50px;
-}
 
 .grid-card-catalogo {
     height: 100px;
@@ -348,6 +343,13 @@ tbody tr:nth-child(even){
 #graficosContainer > div {
     max-width: 600px;
     width: 100%;
+}
+
+#grid-catalogo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin: 20px 0 0 50px;
 }
 
 #painel {

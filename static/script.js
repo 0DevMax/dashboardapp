@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', initializeMateriais);
 // Função para buscar dados de vendas
 async function fetchVendasData() {
     try {
-        const response = await fetch('/api/vendas');
+        const response = await fetch('/api/vendas-registros');
         const data = await response.json();
         return data;
     } catch (error) {

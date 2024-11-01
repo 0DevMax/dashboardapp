@@ -2,33 +2,37 @@
 
 {% block conteudo %}
 
-<h2>Adicionar novo item</h2>
+<div class="container">
 
-<div id="formulario">
-    <form>
-        <div class="input-form">
-            <label for="nome-produto">Nome</label>
-            <input id="nome-produto" name="nome-produto">
-        </div>
-        
-        <div class="input-form">
-            <label for="quantidade-produto">Quantidade</label>
-            <input id="quantidade-produto" name="quantidade-produto">
-        </div>
+    <h2>Adicionar novo item</h2>
 
-        <div class="input-form">
-            <label for="preco-produto">Preço</label>
-            <input id="preco-produto" name="preco-produto">
-        </div>
+    <div id="formulario">
+        <form>
+            <div class="input-form">
+                <label for="nome-produto">Nome</label>
+                <input id="nome-produto" name="nome-produto">
+            </div>
+            
+            <div class="input-form">
+                <label for="quantidade-produto">Quantidade</label>
+                <input id="quantidade-produto" name="quantidade-produto">
+            </div>
 
-        <div class="input-form">
-            <label for="categoria-produto">Categoria</label>
-            <input id="categoria-produto" name="categoria-produto">
-        </div>
+            <div class="input-form">
+                <label for="preco-produto">Preço</label>
+                <input id="preco-produto" name="preco-produto">
+            </div>
 
-        <button class="btn btn-4 btn-sep icon-send">Confirmar</button>
+            <div class="input-form">
+                <label for="categoria-produto">Categoria</label>
+                <input id="categoria-produto" name="categoria-produto">
+            </div>
 
-    </form>
+            <button class="botao">Confirmar</button>
+
+        </form>
+    </div>
+
 </div>
 
 {% endblock %}
