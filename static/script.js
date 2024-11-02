@@ -102,7 +102,7 @@ function preencherCatalogo(dados) {
         const card = document.createElement('div');
         card.className = 'grid-card-catalogo';
         card.innerHTML = `
-            <h5 class="produto-nome">${produto.nome_produto}</h5>
+            <p class="produto-nome">${produto.nome_produto}</p>
             <p class="produto-preco">R$ ${produto.preco.toFixed(2)}</p>
             <p class="produto-quantidade">Quantidade: ${produto.quantidade}</p>
             <p class="produto-categoria">${produto.categoria}</p>
