@@ -114,7 +114,7 @@ tbody tr:nth-child(even){
     height: 100;
     margin-top: 40px;
     gap: 16px;
-    background-color: #85888C;
+    padding: 20px;
 }
 
 .card {
@@ -177,12 +177,17 @@ tbody tr:nth-child(even){
     align-items: center;
     color: rgb(0, 0, 0);
     font-weight: bold;
-    font-size: 17px;
+    font-size: 14px;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
-    background-color: var(--azul1);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.grid-card-catalogo img {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: cover;
 }
 
 .hamb {
@@ -344,7 +349,9 @@ tbody tr:nth-child(even){
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
-    margin: 20px 0 0 50px;
+    justify-content: center;
+    align-items: center;
+
 }
 
 #painel {
