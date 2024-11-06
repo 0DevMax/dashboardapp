@@ -87,6 +87,8 @@ tbody tr:nth-child(even){
     width: 90%;
 }
 
+
+
 .botao {
     background: linear-gradient(#005f73, #0a9396);
     color: white;
@@ -104,6 +106,12 @@ tbody tr:nth-child(even){
     color: rgba(149,67,249,255);
 }
 
+.botao-pesquisa {
+    width: 25px;
+    height: 25px;
+    border: #ccc;
+}
+
 .conteudo {
     display: flex;
     justify-content: center;
@@ -112,7 +120,6 @@ tbody tr:nth-child(even){
     flex-direction: column;
     width: 100%;
     height: 100;
-    margin-top: 40px;
     gap: 16px;
     padding: 20px;
 }
@@ -155,6 +162,11 @@ tbody tr:nth-child(even){
     width: 100%;
 }
 
+.container-pesquisa {
+    display: flex;
+    flex-direction: row;
+}
+
 
 .filtro-bloco {
     align-items: center;
@@ -165,6 +177,10 @@ tbody tr:nth-child(even){
     display: flex;
     flex-direction: column;
     margin: 0.50rem;
+}
+
+.fa-magnifying-glass {
+    color: #005f73;
 }
 
 
@@ -229,6 +245,12 @@ tbody tr:nth-child(even){
     position: sticky;
     top: 0;
     width: 100%;
+}
+
+.icone {
+    height: 20px;
+    width: 20px;
+    margin: 10px;
 }
 
 .input-form {
@@ -356,6 +378,13 @@ tbody tr:nth-child(even){
 
 #painel {
     padding: 4.5vw;
+}
+
+#pesquisa {
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+    border: 2px solid #005f73;
 }
 
 #tabelaMateriais {

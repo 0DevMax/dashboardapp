@@ -2,7 +2,16 @@
 
 {% block conteudo %}
 
+
+
 <!-- Catálogo -->
+
+    <div class="container-pesquisa">
+        <input type="search" id="pesquisa" name="pesquisa" placeholder="Pesquisar">
+        <button class="botao-pesquisa" onclick="realizarPesquisa()"">
+            <img src="/static/icones/lupa.png" class="icone">
+        </button>
+    </div>
 
     <div id="grid-catalogo">
         <!-- Cards preenchidos dinamicamente pelo JavaScript -->

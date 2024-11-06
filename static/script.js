@@ -93,6 +93,7 @@ fetch('/api/dashboard')
 
 
 // CATÁLOGO
+let dadosCatalogo = [];
 // Função para preencher o catálogo de produtos
 function preencherCatalogo(dados) {
     const catalogoContainer = document.getElementById('grid-catalogo');
@@ -115,11 +116,34 @@ fetch('/api/catalogo')
     .then(response => response.json())
     .then(data => {
         console.log("Dados recebidos da API:", data);
-        preencherCatalogo(data);
+        dadosCatalogo = data;
+        preencherCatalogo(dadosCatalogo);
     })
     .catch(error => {
         console.error('Erro ao buscar dados do catálogo:', error);
     });
+
+// Função de pesquisar
+function realizarPesquisa() {
+    const termoPesquisa = document.getElementById('pesquisa').value.toLowerCase().trim();
+
+    if (!termoPesquisa) {
+        preencherCatalogo(dadosCatalogo);
+        return;
+    }
+
+    const resultadosFiltrados = dadosCatalogo.filter(produto => {
+        const nomeMatch = produto.nome_produto.toLowerCase().includes(termoPesquisa);
+        const categoriaMatch = produto.categoria.toLowerCase().includes(termoPesquisa);
+        return nomeMatch || categoriaMatch;
+    });
+
+    preencherCatalogo(resultadosFiltrados);
+
+    // Adicionar feedback de resultados ausentes
+}
+
+window.realizarPesquisa = realizarPesquisa;
 
 
 // ESTOQUES / Produtos
@@ -279,4 +303,3 @@ async function fetchEncomendasData() {
  }
 
  document.addEventListener('DOMContentLoaded', initializeEncomendas);
-
