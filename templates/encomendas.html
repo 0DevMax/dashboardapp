@@ -20,6 +20,34 @@
             <!-- Dados inseridos pelo script-->
         </tbody>
     </table>
+
+    <dialog id="dialog">
+
+        <form>
+            <label for="input-cliente">Cliente</label>
+            <input type="text" id="input-cliente" name="input-cliente">
+
+            <label for="input-contato">Contato</label>
+            <input type="text" id="input-contato" name="input-contato">
+                    
+            <label for="input-produto">Produto</label>
+            <input type="text" id="input-produto" name="input-produto">
+                    
+            <label for="input-quantidade">Quantidade</label>
+            <input type="text" id="input-quantidade" name="input-quantidade">
+                    
+            <label for="input-observacoes">Observações</label>
+            <input type="text" id="input-observacoes" name="input-observacoes">
+
+            <button id="cancelar" type="reset">Cancelar</button>
+            <button id="confirmar" type="submit">Confirmar</button>
+
+        </form>        
+    </dialog>
+
+    <button class="botao-adicionar" id="botao-adicionar">
+        <img src="/static/icones/adicionar.png" class="icone">
+    </button>
     
 </div>
 

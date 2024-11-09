@@ -16,18 +16,28 @@ body:has(.side-menu:checked) {
     overflow: hidden;
 }
 
+button {
+    font-size: 16px;
+    margin-top: 12px;
+}
+
 h2 {
     margin-bottom: 3.5rem;
 }
 
 input {
     width: 90%; 
+    margin: 5px;
 }
 
 
 
 ul {
     list-style: none;
+}
+
+label {
+    align-content: flex-start;
 }
 
 
@@ -110,6 +120,20 @@ tbody tr:nth-child(even){
     width: 25px;
     height: 25px;
     border: #ccc;
+    margin-left: 6px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao-adicionar {
+    height: 50px;
+    width: 50px;
+    align-self: first baseline;
+    margin: 30px 0 0 30px ;
+    border-radius: 19px;
+    border: solid rgb(72, 197, 170) 2px;
 }
 
 .conteudo {
@@ -121,7 +145,10 @@ tbody tr:nth-child(even){
     width: 100%;
     height: 100;
     gap: 16px;
-    padding: 20px;
+}
+
+.container-encomenda {
+    background-color: #9242f9;
 }
 
 .card {
@@ -351,6 +378,15 @@ tbody tr:nth-child(even){
     background-color: #fa7171;
 }
 
+#dialog {
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    margin-left: 30px;
+    height: 300px;
+    width: 340px;   
+}
+
 #faturamento {
     background-color: #9cf79c;
 }
@@ -406,15 +442,14 @@ tbody tr:nth-child(even){
 }
 
 .container {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     margin: 10px auto;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 8px;
     overflow-x: auto;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

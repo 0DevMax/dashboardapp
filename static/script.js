@@ -303,3 +303,17 @@ async function fetchEncomendasData() {
  }
 
  document.addEventListener('DOMContentLoaded', initializeEncomendas);
+
+ // Pop-up encomendas
+
+ const botaoAdicionar = document.getElementById("botao-adicionar");
+ const botaoCancelar = document.getElementById("cancelar");
+ const dialog = document.getElementById("dialog");
+
+ botaoAdicionar.addEventListener("click", () => {
+    dialog.showModal();
+ });
+
+ botaoCancelar.addEventListener("click", () => {
+    dialog.close();
+ })

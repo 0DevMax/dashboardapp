@@ -1,6 +1,7 @@
 .venv/
 venv/
 .env
+.vscode
 package-lock.json
 package.json
 *.sql
