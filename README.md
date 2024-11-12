@@ -84,7 +84,7 @@ python app.py
 
 O sistema estará disponível em `http://localhost:7000`
 
-## APIs
+## API
 
 ### Endpoints Principais
 
