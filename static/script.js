@@ -306,7 +306,46 @@ async function fetchEncomendasData() {
 
  // Pop-up encomendas
 
+ function adicionar_encomenda() {
+    botaoConfirmar.addEventListener("click", async(e) => {
+        e.preventDefault();
+
+        const dados = { 
+            cliente : document.getElementById("input-cliente").value,
+            contato : document.getElementById("input-contato").value,
+            produto : document.getElementById("input-produto").value,
+            quantidade : document.getElementById("input-quantidade").value,
+            observacoes : document.getElementById("input-observacoes").value
+        };
+
+        console.log("Dados enviados sem formatação: ", dados);
+        console.log("Dados enviados com formatação: ", JSON.stringify(dados));
+        
+        try {
+            const response = await fetch('api/encomendas/adicionar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dados)
+            });
+
+            if (response.ok) {
+                alert('Encomenda adicionada');
+                dialog.close();
+                // Adicionar atualização da tabela 
+            } else {
+                alert('Erro ao adicionar encomenda');
+            }
+        } catch(error) {
+            console.error('Erro:', error);
+            alert('Erro ao adicionar encomenda');
+        }
+    });
+ }
+
  const botaoAdicionar = document.getElementById("botao-adicionar");
+ const botaoConfirmar = document.getElementById("confirmar");
  const botaoCancelar = document.getElementById("cancelar");
  const dialog = document.getElementById("dialog");
 
@@ -316,4 +355,8 @@ async function fetchEncomendasData() {
 
  botaoCancelar.addEventListener("click", () => {
     dialog.close();
+ })
+
+ botaoConfirmar.addEventListener("click", () => {
+    adicionar_encomenda();
  })

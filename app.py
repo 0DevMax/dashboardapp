@@ -1,7 +1,7 @@
 import psycopg2
 import os
 from dotenv import load_dotenv
-from flask import Flask, render_template, jsonify, Blueprint, make_response
+from flask import Flask, render_template, jsonify, Blueprint, request
 import datetime
 
 
@@ -227,7 +227,7 @@ def obter_dados_materiais():
     return dados_retornados_materiais
 
 
-# APIs
+# API
 
 api = Blueprint('api', __name__)
 
@@ -262,6 +262,10 @@ def encomendas_dados():
         return jsonify(dados)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@api.route('/encomendas/adicionar', methods=['POST'])
+def adicionar_encomenda(dados):
+    print(dados)
     
 @api.route('/estoques-produtos')
 def produtos_dados():
