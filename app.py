@@ -8,16 +8,16 @@ import datetime
 # Carregar as credenciais nas variáveis de ambiente
 load_dotenv()
 
-# Conexão com o banco de dados
-conn = psycopg2.connect(
-    database=os.getenv("NAME"),
-    user=os.getenv("USER"),
-    password=os.getenv("PASSWORD"),
-    port=os.getenv("PORT"),
-    host=os.getenv("HOST")
-)
-cursor = conn.cursor()
-
+# Função de conexão com o banco de dados
+def conexao_db():
+    conn = psycopg2.connect(
+        database=os.getenv("NAME"),
+        user=os.getenv("USER"),
+        password=os.getenv("PASSWORD"),
+        port=os.getenv("PORT"),
+        host=os.getenv("HOST")
+    )
+    return conn
 
 app = Flask(__name__, static_folder="static")
 
@@ -97,49 +97,51 @@ def rota_relatorios():
 def obter_dados_dashboard():
     dados_retornados_completo = {}
 
-    
-    with conn.cursor() as cur:
-        # Consulta de vendas por categoria
-        query_vendas_categoria = """
-                            SELECT P.categoria, SUM(v.quantidade) AS total_vendido
-                            FROM vendas v
-                            JOIN produtos p ON v.produto_id = p.id
-                            GROUP BY p.categoria
-                            ORDER BY total_vendido DESC
-                            """
-        cur.execute(query_vendas_categoria)
-        dash1 = {}
-        for row in cur.fetchall():
-            categoria, total_vendido = row
-            dash1[categoria] = total_vendido
-        dados_retornados_completo['dadosPorCategoria'] = dash1
-        
-        # Consulta de vendas por dia
-        query_vendas_dia = """
-                        SELECT data, SUM(quantidade) AS total_quantidade
-                        FROM vendas
-                        GROUP by data
-                        ORDER by data
+    conn = conexao_db()
+    cur = conn.cursor()
+    # Consulta de vendas por categoria
+    query_vendas_categoria = """
+                        SELECT P.categoria, SUM(v.quantidade) AS total_vendido
+                        FROM vendas v
+                        JOIN produtos p ON v.produto_id = p.id
+                        GROUP BY p.categoria
+                        ORDER BY total_vendido DESC
                         """
-        cur.execute(query_vendas_dia)
-        dash2 = {}
-        for row in cur.fetchall():
-            data, total_quantidade = row
-            data_str = data.strftime('%Y-%m-%d') if isinstance(data, datetime.date) else str(data)
-            dash2[data_str] = total_quantidade
-        dados_retornados_completo['dadosPorDia'] = dash2
+    cur.execute(query_vendas_categoria)
+    dash1 = {}
+    for row in cur.fetchall():
+        categoria, total_vendido = row
+        dash1[categoria] = total_vendido
+    dados_retornados_completo['dadosPorCategoria'] = dash1
+    
+    # Consulta de vendas por dia
+    query_vendas_dia = """
+                    SELECT data, SUM(quantidade) AS total_quantidade
+                    FROM vendas
+                    GROUP by data
+                    ORDER by data
+                    """
+    cur.execute(query_vendas_dia)
+    dash2 = {}
+    for row in cur.fetchall():
+        data, total_quantidade = row
+        data_str = data.strftime('%Y-%m-%d') if isinstance(data, datetime.date) else str(data)
+        dash2[data_str] = total_quantidade
+    dados_retornados_completo['dadosPorDia'] = dash2
 
-        return dados_retornados_completo
+    return dados_retornados_completo
 
 
 #Função para retornar os dados do catálogo
 def obter_dados_catalogo():
     dados_retornados_catalogo = []
 
-    with conn.cursor() as cur:
-        query_produtos = "SELECT id, nome_produto, preco, quantidade, categoria FROM produtos;"
-        cur.execute(query_produtos)
-        for row in cur.fetchall():
+    conn = conexao_db()
+    cur = conn.cursor()
+
+    query_produtos = "SELECT id, nome_produto, preco, quantidade, categoria FROM produtos;"
+    cur.execute(query_produtos)
+    for row in cur.fetchall():
             id, nome_produto, preco, quantidade, categoria = row
             dados_retornados_catalogo.append({
                 'id': id,
@@ -154,17 +156,18 @@ def obter_dados_catalogo():
 def obter_dados_vendas():
     dados_retornados_vendas = []
 
-    with conn.cursor() as cur:
-        query_vendas = "SELECT id, TO_CHAR(data, 'dd/mm/yyyy'), produto_id, quantidade FROM vendas;"
-        cur.execute(query_vendas)
-        for row in cur.fetchall():
-            id, data, produto_id, quantidade = row
-            dados_retornados_vendas.append({
-                'id': id,
-                'data': data,
-                'produto_id': produto_id,
-                'quantidade': quantidade
-            })
+    conn = conexao_db()
+    cur = conn.cursor()
+    query_vendas = "SELECT id, TO_CHAR(data, 'dd/mm/yyyy'), produto_id, quantidade FROM vendas;"
+    cur.execute(query_vendas)
+    for row in cur.fetchall():
+        id, data, produto_id, quantidade = row
+        dados_retornados_vendas.append({
+            'id': id,
+            'data': data,
+            'produto_id': produto_id,
+            'quantidade': quantidade
+        })
     return dados_retornados_vendas
 
 
@@ -172,37 +175,39 @@ def obter_dados_vendas():
 def obter_dados_encomendas():
     dados_retornados_encomendas = []
 
-    with conn.cursor() as cur:
-        query_encomendas = "SELECT id, cliente, contato, produto, observações, qtd FROM encomendas;"
-        cur.execute(query_encomendas)
-        for row in cur.fetchall():
-            id, cliente, contato, produto, observações, qtd = row
-            dados_retornados_encomendas.append({
-                'id': id,
-                'cliente': cliente,
-                'contato': contato,
-                'produto': produto,
-                'observações': observações,
-                'qtd': qtd
-            })
-        return dados_retornados_encomendas
+    conn = conexao_db()
+    cur = conn.cursor()
+    query_encomendas = "SELECT id, cliente, contato, produto, observações, qtd FROM encomendas;"
+    cur.execute(query_encomendas)
+    for row in cur.fetchall():
+        id, cliente, contato, produto, observações, qtd = row
+        dados_retornados_encomendas.append({
+            'id': id,
+            'cliente': cliente,
+            'contato': contato,
+            'produto': produto,
+            'observações': observações,
+            'qtd': qtd
+        })
+    return dados_retornados_encomendas
     
 # Função para retornar os dados dos produtos
 def obter_dados_produtos():
     dados_retornados_produtos = []
 
-    with conn.cursor() as cur:
-        query_produtos = "SELECT id, nome_produto, preco, quantidade, categoria FROM produtos;"
-        cur.execute(query_produtos)
-        for row in cur.fetchall():
-            id, nome_produto, preco, quantidade, categoria = row
-            dados_retornados_produtos.append({
-                'id': id,
-                'nome_produto': nome_produto,
-                'preco': preco,
-                'quantidade': quantidade,
-                'categoria': categoria
-            })
+    conn = conexao_db()
+    cur = conn.cursor()
+    query_produtos = "SELECT id, nome_produto, preco, quantidade, categoria FROM produtos;"
+    cur.execute(query_produtos)
+    for row in cur.fetchall():
+        id, nome_produto, preco, quantidade, categoria = row
+        dados_retornados_produtos.append({
+            'id': id,
+            'nome_produto': nome_produto,
+            'preco': preco,
+            'quantidade': quantidade,
+            'categoria': categoria
+        })
     return dados_retornados_produtos
 
 
@@ -210,20 +215,21 @@ def obter_dados_produtos():
 def obter_dados_materiais():
     dados_retornados_materiais = []
 
-    with conn.cursor() as cur:
-        query_materiais = "SELECT id, nome_material, fornecedor, qtd, preco, custo_total,data FROM materiais;"
-        cur.execute(query_materiais)
-        for row in cur.fetchall():
-            id, nome_material, fornecedor, qtd, preco, custo_total, data = row
-            dados_retornados_materiais.append({
-                'id': id,
-                'nome_material': nome_material,
-                'fornecedor': fornecedor,
-                'qtd': qtd,
-                'preco': preco,
-                'custo_total': custo_total,
-                'data': data,
-            })
+    conn = conexao_db()
+    cur = conn.cursor()
+    query_materiais = "SELECT id, nome_material, fornecedor, qtd, preco, custo_total,data FROM materiais;"
+    cur.execute(query_materiais)
+    for row in cur.fetchall():
+        id, nome_material, fornecedor, qtd, preco, custo_total, data = row
+        dados_retornados_materiais.append({
+            'id': id,
+            'nome_material': nome_material,
+            'fornecedor': fornecedor,
+            'qtd': qtd,
+            'preco': preco,
+            'custo_total': custo_total,
+            'data': data,
+        })
     return dados_retornados_materiais
 
 
@@ -264,8 +270,36 @@ def encomendas_dados():
         return jsonify({'error': str(e)}), 500
     
 @api.route('/encomendas/adicionar', methods=['POST'])
-def adicionar_encomenda(dados):
-    print(dados)
+def adicionar_encomenda():
+    try:
+        dados = request.get_json()
+
+        # Desempacotar dados
+        cliente = dados['cliente']
+        contato = dados['contato']
+        produto = dados['produto']
+        observacoes = dados['observacoes']
+        qtd = dados['quantidade']
+
+
+        conn = conexao_db()
+        cur = conn.cursor()
+
+        query = """
+            INSERT INTO encomendas (cliente, contato, produto, observações, qtd) 
+            VALUES (%s, %s, %s, %s, %s);
+        """
+        cur.execute(query, (cliente, contato, produto, observacoes, qtd))
+        conn.commit()           
+
+        cur.close()
+        conn.close()
+
+        return jsonify({'message': 'Encomenda adicionada com sucesso'}), 201
+    
+    except Exception as e:
+        print(f"Erro ao adicionar encomenda: {str(e)}")
+        return jsonify({'error': str(e)}), 500
     
 @api.route('/estoques-produtos')
 def produtos_dados():

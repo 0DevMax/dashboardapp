@@ -306,57 +306,58 @@ async function fetchEncomendasData() {
 
  // Pop-up encomendas
 
- function adicionar_encomenda() {
-    botaoConfirmar.addEventListener("click", async(e) => {
-        e.preventDefault();
+const form = document.getElementById("formulario");
 
-        const dados = { 
-            cliente : document.getElementById("input-cliente").value,
-            contato : document.getElementById("input-contato").value,
-            produto : document.getElementById("input-produto").value,
-            quantidade : document.getElementById("input-quantidade").value,
-            observacoes : document.getElementById("input-observacoes").value
-        };
+async function adicionar_encomenda(e) {
+    e.preventDefault(); 
+ 
+    const cliente = document.getElementById("input-cliente").value
+    const contato = document.getElementById("input-contato").value
+    const produto = document.getElementById("input-produto").value
+    const quantidade = document.getElementById("input-quantidade").value
+    const observacoes = document.getElementById("input-observacoes").value
+    
+    // Pendendente validação de dados
 
-        console.log("Dados enviados sem formatação: ", dados);
-        console.log("Dados enviados com formatação: ", JSON.stringify(dados));
-        
-        try {
-            const response = await fetch('api/encomendas/adicionar', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dados)
-            });
-
-            if (response.ok) {
-                alert('Encomenda adicionada');
-                dialog.close();
-                // Adicionar atualização da tabela 
-            } else {
-                alert('Erro ao adicionar encomenda');
-            }
-        } catch(error) {
-            console.error('Erro:', error);
-            alert('Erro ao adicionar encomenda');
-        }
+    const dados = {
+        cliente: cliente,
+        contato: contato,
+        produto: produto,
+        quantidade: parseInt(quantidade),
+        observacoes: observacoes
+    }
+    
+    try {
+        const response = await fetch('/api/encomendas/adicionar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dados)
     });
- }
+    
+    if (!response.ok) {
+        throw new Error('Erro no servidor');
+    }
 
- const botaoAdicionar = document.getElementById("botao-adicionar");
- const botaoConfirmar = document.getElementById("confirmar");
- const botaoCancelar = document.getElementById("cancelar");
- const dialog = document.getElementById("dialog");
+    alert('Encomenda adicionada com sucesso!');
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Falha ao adicionar encomenda');
+    }
+}
 
- botaoAdicionar.addEventListener("click", () => {
+form.addEventListener('submit', adicionar_encomenda);
+
+const botaoAdicionar = document.getElementById("botao-adicionar");
+const botaoConfirmar = document.getElementById("confirmar");
+const botaoCancelar = document.getElementById("cancelar");
+const dialog = document.getElementById("dialog");
+
+botaoAdicionar.addEventListener("click", () => {
     dialog.showModal();
- });
+});
 
- botaoCancelar.addEventListener("click", () => {
+botaoCancelar.addEventListener("click", () => {
     dialog.close();
- })
-
- botaoConfirmar.addEventListener("click", () => {
-    adicionar_encomenda();
- })
+})
