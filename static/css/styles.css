@@ -366,6 +366,44 @@ tbody tr:nth-child(even){
     color: #85888C;
 }
 
+.GridEncomendas {
+    width: 300px;
+    margin: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    background: linear-gradient(white, rgb(179, 35, 35));
+}
+
+
+.CardPedido {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1px;
+    border-collapse: collapse;
+    background-color: rgb(224, 224, 224);
+    margin-bottom: 20px;
+}
+
+.labelEncomenda {
+    color: rgb(84, 3, 235);
+    padding: 8px;
+    font-size: 14px;
+    align-content: center;
+}
+
+.valorEncomenda {
+    padding: 8px;
+    font-size: 14px;
+    color: #333333;
+}
+
+.CardPedido > div {
+    border: 1.8px solid rgb(158, 157, 157);
+    border-radius: 3px;
+}
+
 /* Seletores de ID */
 
 #adc-encomenda{

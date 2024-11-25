@@ -279,20 +279,20 @@ async function fetchEncomendasData() {
 
  //Função para preencher a tabela de encomendas com dados recebidos
  function criarTabelaEncomendas(data) {
-    const tbody = document.querySelector('#tabelaEncomendas tbody');
-    tbody.innerHTML = '';
+    console.log(data);
+    const GridEncomendas = document.querySelector('#GridEncomendas');
+    GridEncomendas.innerHTML = '';
 
     data.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td data-title="ID">${item.id}</td>
-            <td data-title="Cliente">${item.cliente}</td>
-            <td data-title="Contato">${item.contato}</td>
-            <td data-title="Produto">${item.produto}</td>
-            <td data-title="Observações">${item.observações}</td>
-            <td data-title="Qtd">${item.qtd}</td>
+        const CardPedido = document.createElement('div');
+        CardPedido.className = "CardPedido"
+        CardPedido.innerHTML = `
+            <div class="labelEncomenda">CLIENTE</div>
+            <div class="valorEncomenda">${item.cliente}</div>
+            <div class="labelEncomenda">PEDIDO</div>
+            <div class="valorEncomenda">${item.produto}</div>
         `;
-        tbody.appendChild(row);
+        GridEncomendas.appendChild(CardPedido);
     });
  }
 
