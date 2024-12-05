@@ -284,7 +284,7 @@ async function fetchEncomendasData() {
     GridEncomendas.innerHTML = '';
 
     data.forEach(item => {
-        const CardPedido = document.createElement('div');
+        const CardPedido = document.createElement('button');
         CardPedido.className = "CardPedido"
         CardPedido.innerHTML = `
             <div class="labelEncomenda">CLIENTE</div>

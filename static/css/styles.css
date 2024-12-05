@@ -380,10 +380,12 @@ tbody tr:nth-child(even){
 .CardPedido {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 1px;
     border-collapse: collapse;
     background-color: rgb(224, 224, 224);
     margin-bottom: 20px;
+    border: 0.1px solid rgb(158, 157, 157);
+    border-radius: 3px;
+    width: 250px;
 }
 
 .labelEncomenda {
@@ -397,11 +399,6 @@ tbody tr:nth-child(even){
     padding: 8px;
     font-size: 14px;
     color: #333333;
-}
-
-.CardPedido > div {
-    border: 1.8px solid rgb(158, 157, 157);
-    border-radius: 3px;
 }
 
 /* Seletores de ID */
