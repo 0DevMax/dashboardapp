@@ -265,6 +265,11 @@ document.addEventListener('DOMContentLoaded', initializeVendas);
 
 
 // ENCOMENDAS
+let NextID = 0;
+
+function getNextID() {
+    return NextID++;
+}
 // Função para buscar dados de encomendas
 async function fetchEncomendasData() {
     try {
@@ -280,19 +285,47 @@ async function fetchEncomendasData() {
  //Função para preencher a tabela de encomendas com dados recebidos
  function criarTabelaEncomendas(data) {
     console.log(data);
-    const GridEncomendas = document.querySelector('#GridEncomendas');
-    GridEncomendas.innerHTML = '';
+    const grid = document.querySelector('#grid');
+    grid.innerHTML = '';
 
     data.forEach(item => {
-        const CardPedido = document.createElement('button');
-        CardPedido.className = "CardPedido"
-        CardPedido.innerHTML = `
+        const card = document.createElement('a');
+        const ID = getNextID().toString();
+        card.className = "button"
+        card.href = "#popup" + ID;
+        card.innerHTML = `
             <div class="labelEncomenda">CLIENTE</div>
             <div class="valorEncomenda">${item.cliente}</div>
             <div class="labelEncomenda">PEDIDO</div>
             <div class="valorEncomenda">${item.produto}</div>
         `;
-        GridEncomendas.appendChild(CardPedido);
+
+        const overlay = document.createElement('div');
+        overlay.className = "overlay";        
+        overlay.id = "popup" + ID;
+
+        const popup = document.createElement('div');
+        popup.className = "popup";
+
+        const close = document.createElement('a')
+        close.className = "close";
+        close.href = "#";
+        close.innerHTML = `&times`;
+
+        const content = document.createElement('div')
+        content.innerHTML = `<div class="labelEncomenda">CONTATO</div>
+            <div class="valorEncomenda">${item.contato}</div>
+            <div class="labelEncomenda">QUANTIDADE</div>
+            <div class="valorEncomenda">${item.qtd}</div>
+            <div class="labelEncomenda">OBSERVAÇÕES</div>
+            <div class="valorEncomenda">${item.observações}</div>
+        `
+
+        grid.appendChild(card);
+        card.appendChild(overlay);
+        overlay.appendChild(popup);
+        popup.appendChild(content);
+        popup.appendChild(close);
     });
  }
 
