@@ -97,6 +97,25 @@ tbody tr:nth-child(even){
     width: 90%;
 }
 
+.button {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1px;
+    border-collapse: collapse;
+    background-color: rgb(230, 222, 245);
+    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 0.5rem;font-size: 1em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+button > div {
+    border: 1.8px solid rgb(158, 157, 157);
+    border-radius: 3px;
+}
+
 
 
 .botao {
@@ -158,16 +177,6 @@ tbody tr:nth-child(even){
     background-color: #9242f9;
 }
 
-.card {
-    border-radius: 0.75rem;
-    height: 8.625rem; 
-    margin: 1.25rem;
-    padding: 0.5rem 1rem 0 1rem;
-    width: 19.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
 
 .cardInfoValor {
     display: flex;
@@ -336,6 +345,56 @@ tbody tr:nth-child(even){
     width: 100%;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 50%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+margin-top: 0;
+color: #333;
+font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+position: absolute;
+top: 20px;
+right: 30px;
+transition: all 200ms;
+font-size: 30px;
+font-weight: bold;
+text-decoration: none;
+color: #333;
+}
+.popup .close:hover {
+color: #06D85F;
+}
+.popup .content {
+max-height: 30%;
+overflow: auto;
+color: black;
+}
+
 .pesquisa {
     width: 100%;
 }
@@ -364,6 +423,30 @@ tbody tr:nth-child(even){
 
 .tag {
     color: #85888C;
+}
+
+.grid {
+    width: 300px;
+    margin: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    background: linear-gradient(white, rgb(179, 35, 35));
+}
+
+
+.labelEncomenda {
+    color: rgb(84, 3, 235);
+    padding: 8px;
+    font-size: 14px;
+    align-content: center;
+}
+
+.valorEncomenda {
+    padding: 8px;
+    font-size: 14px;
+    color: #333333;
 }
 
 /* Seletores de ID */
