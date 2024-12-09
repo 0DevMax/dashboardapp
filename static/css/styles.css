@@ -162,6 +162,17 @@ button > div {
     font-size: 26px;
 }
 
+.card {
+    border-radius: 0.75rem;
+    height: 8.625rem; 
+    margin: 1.25rem;
+    padding: 0.5rem 1rem 0 1rem;
+    width: 19.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .conteudo {
     display: flex;
     justify-content: center;
