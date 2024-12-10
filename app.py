@@ -1,9 +1,14 @@
 import psycopg2
 import os
+import datetime
+import logging
+import traceback
 from dotenv import load_dotenv
 from flask import Flask, render_template, jsonify, Blueprint, request
-import datetime
 
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    filename='application_debug.log')
 
 # Carregar as credenciais nas variáveis de ambiente
 load_dotenv()
@@ -12,8 +17,8 @@ load_dotenv()
 def conexao_db():
     conn = psycopg2.connect(
         database=os.getenv("NAME"),
-        user=os.getenv("USER"),
-        password=os.getenv("PASSWORD"),
+        user=os.getenv("USER_DB"),
+        password= os.getenv("PASSWORD"),
         port=os.getenv("PORT"),
         host=os.getenv("HOST")
     )
@@ -135,22 +140,59 @@ def obter_dados_dashboard():
 #Função para retornar os dados do catálogo
 def obter_dados_catalogo():
     dados_retornados_catalogo = []
+    conn = None
+    cur = None
 
-    conn = conexao_db()
-    cur = conn.cursor()
+    try:
+        conn = conexao_db()
+        if not conn:
+            raise Exception("Falha ao estabelecer conexão com o banco de dados")
+        
+        cur = conn.cursor()
+        if not cur:
+            raise Exception("Falha ao criar cursor do banco de dados")
+        
+        query_produtos = "SELECT id, nome_produto, preco, quantidade, categoria FROM produtos;"
+        cur.execute(query_produtos)
+        resultados = cur.fetchall()
+        if not resultados:
+            logging.warning("Nenhuym resultado encontrado na consulta de produtos")
 
-    query_produtos = "SELECT id, nome_produto, preco, quantidade, categoria FROM produtos;"
-    cur.execute(query_produtos)
-    for row in cur.fetchall():
-            id, nome_produto, preco, quantidade, categoria = row
-            dados_retornados_catalogo.append({
-                'id': id,
-                'nome_produto': nome_produto,
-                'preco': float(preco),
-                'quantidade': quantidade,
-                'categoria': categoria
-            })
-    return dados_retornados_catalogo
+        for row in resultados:
+            try:
+                id, nome_produto, preco, quantidade, categoria = row
+
+                dados_retornados_catalogo.append({
+                    'id': id,
+                    'nome_produto': nome_produto,
+                    'preco': float(preco),
+                    'quantidade': quantidade,
+                    'categoria': categoria
+                })
+            except Exception as row_error:
+                logging.error(f"Erro ao processar linha: {row}. Erro: {row_error}")
+
+        return dados_retornados_catalogo
+    
+    except psycopg2.Error as db_error:
+        logging.error(f"Erro de banco de dados: {db_error}")
+        logging.error(f"Código de erro: {db_error.pgcode}")
+        logging.error(f"Detalhe do erro: {db_error.pgerror}")
+        raise
+    
+    except Exception as e:
+        logging.error(f"Erro inesperado: {e}")
+        logging.error(traceback.format_exc())
+        raise
+
+    finally:
+        try:
+            if cur:
+                cur.close()
+            if conn:
+                conn.close()
+        except Exception as close_error:
+            logging.error(f"Erro ao fechar conexão: {close_error}")
 
 #Função para retornar os dados das vendas
 def obter_dados_vendas():
@@ -245,13 +287,25 @@ def dashboard_dados():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
-@api.route('/catalogo', methods=['GET'])
+@api.route('/catalogo')
 def catalogo_dados():
     try:
-        dados = obter_dados_catalogo()
+        dados =obter_dados_catalogo()
         return jsonify(dados)
+    
+    except psycopg2.Error as db_error:
+        return jsonify({
+            'error': 'Erro de banco de dados',
+            'details': str(db_error),
+            'error_code': getattr(db_error, 'pgcode', 'Unknown')
+        }), 500
+    
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        logging.error(f"Erro na rota de catálogo: {traceback.format_exc()}")
+        return jsonify({
+            'error': 'Erro interno do servido',
+            'details': str(e)
+        }), 500
     
 @api.route('/vendas-registros')
 def vendas_dados():

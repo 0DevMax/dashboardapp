@@ -16,9 +16,9 @@ body:has(.side-menu:checked) {
     overflow: hidden;
 }
 
-button {
-    font-size: 16px;
-    margin-top: 12px;
+button > div {
+    border: 1.8px solid rgb(158, 157, 157);
+    border-radius: 3px;
 }
 
 h2 {
@@ -106,16 +106,10 @@ tbody tr:nth-child(even){
     margin-bottom: 20px;
     flex-direction: column;
     gap: 0.5rem;font-size: 1em;
-    text-decoration: none;
+
     cursor: pointer;
     transition: all 0.3s ease-out;
 }
-
-button > div {
-    border: 1.8px solid rgb(158, 157, 157);
-    border-radius: 3px;
-}
-
 
 
 .botao {
@@ -123,7 +117,6 @@ button > div {
     color: white;
     padding: 15px 25px 15px 15px;
     border-radius: 9px;
-    text-decoration: none;
     height: 50px;
     width: 250px;
     margin: 30px;
@@ -138,6 +131,7 @@ button > div {
 .botao-pesquisa {
     width: 25px;
     height: 25px;
+    margin-top: 8px;
     border: #ccc;
     margin-left: 6px;
     background-color: transparent;
@@ -394,7 +388,6 @@ right: 30px;
 transition: all 200ms;
 font-size: 30px;
 font-weight: bold;
-text-decoration: none;
 color: #333;
 }
 .popup .close:hover {

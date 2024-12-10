@@ -8,3 +8,4 @@ package-lock.json
 package.json
 *.sql
 rascunho
+application_debug.log
